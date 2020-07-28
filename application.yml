@@ -1,0 +1,70 @@
+logging:
+  file:
+    name: cx-flow.log
+
+cx-flow:
+  bug-tracker: Sarif
+  bug-tracker-impl:
+    - CxXml
+    - Json
+    - GitHub
+    - Csv
+    - Sarif
+  filter-severity:
+    - High
+    - Medium
+    - Low
+  mitre-url: https://cwe.mitre.org/data/definitions/%s.html
+  zip-exclude: ""
+  break-build: false
+  enabled-vulnerability-scanners:
+    #- sca
+    - sast
+  
+checkmarx:
+  base-url: ${CHECKMARX_BASE_URL}
+  url: ${CHECKMARX_BASE_URL}/cxrestapi
+  scan-preset: Checkmarx Default
+  configuration: Default Configuration
+  team: \CxServer\SP\Company
+  scan-timeout: 120
+  portal-url: ${CHECKMARX_BASE_URL}/cxwebinterface/Portal/CxWebService.asmx
+  #project-script: ./CxProject.groovy
+  #team-script: ./CxTeam.groovy
+  #exclude-files:
+  #exclude-folders:
+
+github:
+  url: https://github.com
+  api-url: https://api.github.com/repos/
+  block-merge: true
+  error-merge: true
+
+jira:
+  
+json:
+  file-name-format: "cx.json"
+  data-folder: "/tmp"
+
+cx-xml:
+  file-name-format: "cx.xml"
+  data-folder: "/tmp"
+
+csv:
+  file-name-format: "cx.csv"
+  data-folder: "/tmp"
+  include-header: true
+  fields:
+    - header: Application
+      name: application
+      default-value: unknown
+    - header: file
+      name: filename
+    - header: Vulnerability Name
+      name: category
+    - header: CWE
+      name: cwe
+    - header: Severity
+      name: severity
+    - header: Similarity ID
+      name: similarity-id

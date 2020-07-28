@@ -1,56 +1,40 @@
 name: 'Checkmarx CxFlow Action'
-description: 'A GitHub Action to simplify Checkmarx Scanning of source code along with Result consumption leveraging Checkmarx CxFlow solution.'
+description: 'Simplify Checkmarx Scanning of source code along with Result consumption leveraging Checkmarx CxFlow solution.'
 author: 'Checkmarx Technical Services'
 inputs:
-  checkmarx-url:
+  checkmarx_url:
     required: true
     description: 'Provide Checkmarx URL'
     default: ''
   team:
     required: true
     description: 'Select a Checkmarx Team'
-    default: '\\CxServer\\SP\\Company'
-  checkmarx-username:
+    default: '\CxServer\SP\Company'
+  checkmarx_username:
     required: true
     description: 'Provide Checkmarx Username'
     default: ''
-  checkmarx-password:
+  checkmarx_password:
     required: true
     description: 'Provide Checkmarx Password'
     default: ''
-  version:
-    required: false
-    default: '8.9'
-    description: 'Select a Checkmarx version'
-  auth-scopes:
-    required: false
-    default: 'sast_rest_api'
-    description: 'Checkmarx Access Control Scopes'
+  checkmarx_client_secret:
+    required: true
+    description: 'Provide Checkmarx Client Secret'
+    default: ''
   project:
-    required: false
-    default: '${GITHUB_REPOSITORY}'
+    required: true
+    default: ''
     description: 'Select a Checkmarx Project'
-  preset:
-    required: false
-    default: 'Checkmarx Express'
-    description: 'Select a Checkmarx Preset'
-  scan-configuration:
-    required: false
-    default: 'Default Configuration'
-    description: 'Select a Scan Engine Configuration'
   app:
     required: false
-    default: '${GITHUB_REPOSITORY}'
-    description: 'Select an Application Name used by downstream bug tracker systems'
-  apply-filters:
+    default: 'SampleApp'
+    description: 'Select an Application Name used by downstream bug tracker systems'  
+  preset:
     required: false
-    default: '--filter-severity=High --filter-severity=Medium --filter-severity=Low'
-    description: 'Select report filter criteria'
-  bug-tracker:
-    required: false
-    default: 'Sarif'
-    description: 'Select a proper bug tracker'
-  break:
+    default: 'Checkmarx Default'
+    description: 'Select a Checkmarx Preset'
+  break_build:
     required: false
     default: false
     description: 'Break build based on Checkmarx findings?'
@@ -58,44 +42,43 @@ inputs:
     required: false
     default: true
     description: 'Incremental Scans?'
-  scan-timeout:
-    required: false
-    default: 120
-    description: 'Maximum time to wait for a scan to complete (in minutes)'
-  report-file:
-    required: false
-    default: './cx.sarif'
-    description: 'SARIF Report filename'
   params:
     required: false
     default: ''
     description: 'Additional CLI parameters'
+  github_token:
+    required: false
+    default: ''
+    description: 'GitHub API Token'
 runs:
   using: 'docker'
-  image: 'docker://checkmarxts/cxflow'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.team }}
+    - ${{ inputs.project }}
+    - ${{ inputs.app }}
+    - ${{ inputs.checkmarx_username }}
+    - ${{ inputs.checkmarx_password }}
+    - ${{ inputs.checkmarx_client_secret }}
+    - ${{ inputs.checkmarx_url }}
+    - ${{ inputs.preset }}
+    - ${{ inputs.incremental }}
+    - ${{ inputs.break_build }}
+    - ${{ inputs.params }}
+    - ${{ inputs.github_token }}
   env:
-    CHECKMARX_USERNAME: ${{ inputs.checkmarx-username  }}
-    CHECKMARX_PASSWORD: ${{ inputs.checkmarx-password  }}
-  entrypoint: |
-    java -jar /app/cx-flow.jar \
-    --scan \
-    --cx-team='${{ inputs.team  }}' \
-    --cx-project='${{ inputs.project  }}' \
-    --app='${{ inputs.app  }}' \
-    --f=. \
-    --cx-flow.bug-tracker='${{ inputs.bug-tracker  }}' \
-    --cx-flow.bug-tracker-impl='${{ inputs.bug-tracker  }}' \
-    ${{ inputs.apply-filters  }} \
-    --checkmarx.version=${{ inputs.version  }} \
-    --checkmarx.scope='${{ inputs.auth-scopes  }}' \
-    --checkmarx.url='${{ inputs.checkmarx-url  }}/cxrestapi' \
-    --checkmarx.portal-url='${{ inputs.checkmarx-url  }}/cxwebinterface/Portal/CxWebService.asmx' \
-    --checkmarx.incremental=${{ inputs.incremental  }} \
-    --checkmarx.scan-preset='${{ inputs.preset  }}' \
-    --checkmarx.configuration='${{ inputs.scan-configuration  }}' \
-    --checkmarx.scan-timeout=${{ inputs.scan-timeout  }} \
-    --sarif.file-path-format='${{ inputs.report-file  }}' \
-    ${{ inputs.params  }}
+    TEAM: "${{ inputs.team }}"
+    PROJECT: ${{ inputs.project }}
+    APP: ${{ inputs.app }}
+    CHECKMARX_USERNAME: ${{ inputs.checkmarx_username }}
+    CHECKMARX_PASSWORD: ${{ inputs.checkmarx_password }}
+    CHECKMARX_CLIENT_SECRET: ${{ inputs.checkmarx_client_secret }}
+    CHECKMARX_BASE_URL: ${{ inputs.checkmarx_url }}
+    CHECKMARX_SCAN_PRESET: ${{ inputs.preset }}
+    CHECKMARX_INCREMENTAL: ${{ inputs.incremental }}
+    CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
+    CXFLOW_PARAMS: ${{ inputs.params }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
 branding:
   icon: 'check'
   color: 'green'
