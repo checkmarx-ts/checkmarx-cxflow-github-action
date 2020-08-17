@@ -8,7 +8,7 @@ Checkmarx CxFlow GitHub Action with SARIF output.
 
 Publish Security Alerts (CodeQL) associated with the code in your Github Repository using Checkmarx with this Github Action Integration. 
 
-This is a Wrapper to trigger scansthe latest version of CxFlow through Docker to launch Checkmarx SAST or SCA Scans.
+This is a Wrapper to trigger scans the latest version of CxFlow through Docker to launch Checkmarx SAST or SCA Scans.
 
 ![Checkmarx](images/checkmarx-big.png)
 
