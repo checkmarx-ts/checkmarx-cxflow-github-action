@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-FROM checkmarxts/cxflow:github
+FROM checkmarx/cx-flow
 #Apply any updates
 RUN apk update && apk upgrade
 #Copy the entrypoint script and properties used for the action
