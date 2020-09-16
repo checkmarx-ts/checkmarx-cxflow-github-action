@@ -9,7 +9,7 @@ inputs:
   team:
     required: true
     description: 'Select a Checkmarx Team'
-    default: '\CxServer\SP\Company'
+    default: '/CxServer/SP/Company'
   checkmarx_username:
     required: true
     description: 'Provide Checkmarx Username'
