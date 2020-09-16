@@ -22,11 +22,13 @@ cx-flow:
     - sast
   
 checkmarx:
+  version: 9.0
+  scope: access_control_api sast_rest_api
   base-url: ${CHECKMARX_BASE_URL}
   url: ${CHECKMARX_BASE_URL}/cxrestapi
   scan-preset: Checkmarx Default
   configuration: Default Configuration
-  team: \CxServer\SP\Company
+  team: /CxServer/SP/Company
   scan-timeout: 120
   portal-url: ${CHECKMARX_BASE_URL}/cxwebinterface/Portal/CxWebService.asmx
   #project-script: ./CxProject.groovy
