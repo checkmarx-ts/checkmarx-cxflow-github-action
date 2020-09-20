@@ -22,17 +22,29 @@ cx-flow:
     - sast
   
 checkmarx:
-  base-url: ${CHECKMARX_BASE_URL}
-  url: ${CHECKMARX_BASE_URL}/cxrestapi
-  scan-preset: Checkmarx Default
+  base-url: https://api.checkmarx.net
+  portal-url: https://cloud.checkmarx.net
+  # CxOD Business unit that will contain the project/application/scan
+  team: \Demo\CxFlow
+  url: ${checkmarx.base-url}
+  multi-tenant: true
   configuration: Default Configuration
-  team: \CxServer\SP\Company
-  scan-timeout: 120
-  portal-url: ${CHECKMARX_BASE_URL}/cxwebinterface/Portal/CxWebService.asmx
-  #project-script: ./CxProject.groovy
-  #team-script: ./CxTeam.groovy
-  #exclude-files:
-  #exclude-folders:
+  #
+  ## Available Scan defaults
+  #
+  #   - CXOD_MOBILE_NATIVE = 1;
+  #   - CXOD_MOBILE_WEB_BASED = 2;
+  #   - CXOD_DESKTOP_NATIVE = 3;
+  #   - CXOD_DESKTOP_WEB = 4;
+  #   - CXOD_API = 5;
+  #   - CXOD_FRONTEND = 6;
+  #   - CXOD_BACKEND = 7;
+  #   - CXOD_LAMBDA = 8;
+  #   - CXOD_CLI = 9;
+  #   - CXOD_SERVICE = 10;
+  #   - CXOD_SMART_DEVICE = 11;
+  #   - CXOD_OTHER = 12;
+  scan-preset: 1,2,3,4,5,9
 
 github:
   url: https://github.com
