@@ -5,7 +5,7 @@ inputs:
   team:
     required: true
     description: 'Select a Checkmarx Team'
-    default: '\CxServer\SP\Company'
+    default: '/Demo/CxFlow'
   checkmarx_client_secret:
     required: true
     description: 'Provide Checkmarx Client Secret (API Token)'
