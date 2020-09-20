@@ -2,25 +2,13 @@ name: 'Checkmarx CxFlow Action'
 description: 'Simplify Checkmarx Scanning of source code along with Result consumption leveraging Checkmarx CxFlow solution.'
 author: 'Checkmarx Technical Services'
 inputs:
-  checkmarx_url:
-    required: true
-    description: 'Provide Checkmarx URL'
-    default: ''
   team:
     required: true
     description: 'Select a Checkmarx Team'
     default: '\CxServer\SP\Company'
-  checkmarx_username:
-    required: true
-    description: 'Provide Checkmarx Username'
-    default: ''
-  checkmarx_password:
-    required: true
-    description: 'Provide Checkmarx Password'
-    default: ''
   checkmarx_client_secret:
     required: true
-    description: 'Provide Checkmarx Client Secret'
+    description: 'Provide Checkmarx Client Secret (API Token)'
     default: ''
   project:
     required: true
@@ -30,18 +18,10 @@ inputs:
     required: false
     default: 'SampleApp'
     description: 'Select an Application Name used by downstream bug tracker systems'  
-  preset:
-    required: false
-    default: 'Checkmarx Default'
-    description: 'Select a Checkmarx Preset'
   break_build:
     required: false
     default: false
     description: 'Break build based on Checkmarx findings?'
-  incremental:
-    required: false
-    default: true
-    description: 'Incremental Scans?'
   params:
     required: false
     default: ''
@@ -57,12 +37,7 @@ runs:
     - ${{ inputs.team }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
-    - ${{ inputs.checkmarx_username }}
-    - ${{ inputs.checkmarx_password }}
     - ${{ inputs.checkmarx_client_secret }}
-    - ${{ inputs.checkmarx_url }}
-    - ${{ inputs.preset }}
-    - ${{ inputs.incremental }}
     - ${{ inputs.break_build }}
     - ${{ inputs.params }}
     - ${{ inputs.github_token }}
@@ -70,12 +45,7 @@ runs:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
-    CHECKMARX_USERNAME: ${{ inputs.checkmarx_username }}
-    CHECKMARX_PASSWORD: ${{ inputs.checkmarx_password }}
     CHECKMARX_CLIENT_SECRET: ${{ inputs.checkmarx_client_secret }}
-    CHECKMARX_BASE_URL: ${{ inputs.checkmarx_url }}
-    CHECKMARX_SCAN_PRESET: ${{ inputs.preset }}
-    CHECKMARX_INCREMENTAL: ${{ inputs.incremental }}
     CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
     CXFLOW_PARAMS: ${{ inputs.params }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
