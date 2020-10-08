@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-FROM checkmarxts/cxflow:cxgo8
+FROM checkmarx/cx-flow:1.6.10-CXGO8
 #Apply any updates
 RUN apk update && apk upgrade
 #Copy the entrypoint script and properties used for the action
