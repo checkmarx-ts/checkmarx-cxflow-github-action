@@ -7,6 +7,7 @@ on: # Controls when the action will run. Triggers the workflow on pull request e
     types: [opened, reopened, synchronize] #Types specify which pull request events will trigger the workflow. For more events refer Github Actions documentation.
     branches:
       - master
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel - this job is specifically configured to use the Checkmarx CxFlow Action
 jobs:
