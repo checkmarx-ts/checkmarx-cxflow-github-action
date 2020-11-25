@@ -58,15 +58,15 @@ inputs:
   sca_api_url:
     required: false
     description: 'Provide SCA API URL'
-    default: ''
+    default: 'https://api.scacheckmarx.com'
   sca_app_url:
     required: false
     description: 'Provide SCA APP URL'
-    default: ''
+    default: 'https://sca.scacheckmarx.com'
   sca_access_control_url:
     required: false
     description: 'Provide SCA Access Control URL'
-    default: ''
+    default: 'https://platform.checkmarx.net'
   sca_tenant:
     required: false
     description: 'Provide SCA Tenant'

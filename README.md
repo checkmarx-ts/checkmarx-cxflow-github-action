@@ -34,9 +34,9 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |
 | github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | \CxServer\SP\Company |
 | scanners | sast,ast,cxgo,sca | Vulnerability Scanners (sast, sca, ast, cxgo) | String | Yes | N/A |
-| sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | N/A |
-| sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | N/A |
-| sca_access_control_url | https://platform.checkmarx.net | Access control URL for SCA scan | String | No | N/A |
+| sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | https://api.scacheckmarx.com  |
+| sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | https://sca.scacheckmarx.com |
+| sca_access_control_url | https://platform.checkmarx.net | Access control URL for SCA scan | String | No | https://platform.checkmarx.net |
 | sca_tenant | SCA-COMPANY_NAME | Tenant for the SCA project | String | No | N/A |
 | sca_username | ${{ secrets.SCA_USERNAME }} | Username for SCA scan | String | No | N/A |
 | sca_password | ${{ secrets.SCA_PASSWORD }} | Password for SCA scan | Secure String | No | N/A |
