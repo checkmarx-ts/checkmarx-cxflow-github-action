@@ -1,0 +1,35 @@
+name: Checkmarx SAST Scan
+on:
+  push:
+    branches:
+      - master
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env :
+        REPO_NAME: ${{ github.event.repository.name }}
+    steps:
+    - name: Get the Organization Name
+      run: echo "ORG_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')" >> $GITHUB_ENV
+    - name: Checkout
+      uses: actions/checkout@v2
+    # Scan code with Checkmarx
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      with:
+        project: <ProjectName>
+        team: /CxServer/TeamName
+        checkmarx_url: <Checkmarx-SAST-URL>
+        checkmarx_username: ${{ secrets.CX_USER }} #To be stored in GitHub Secrets.
+        checkmarx_password: ${{ secrets.CX_PASSWORD }} #To be stored in GitHub Secrets.
+        checkmarx_client_secret: ${{ secrets.CX_CLIENT_SECRET }} #To be stored in GitHub Secrets.
+        break_build: false
+        scanners: sast
+        github_token: ${{ secrets.GH_TOKEN }}
+        params: --namespace=${{ env.ORG_NAME }} --repo-name=${{ env.REPO_NAME }}  --branch=${{ github.ref }} 
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
+

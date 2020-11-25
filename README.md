@@ -103,6 +103,15 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
 
 ![Sample Alert](images/sample-sarif-alert.png)
 
+## Sample Workflow files
+
+ * [Github PUSH workflow for AST](sample-yml/checkmarx-ast-scan-push.yml)
+ * [Github PUSH workflow for SAST](sample-yml/checkmarx-sast-scan-push.yml)
+ * [Github PUSH workflow for CxGo](sample-yml/checkmarx-cxgo-scan-push.yml)
+ * [Github PUSH workflow for SCA](sample-yml/checkmarx-sca-scan-push.yml)
+ * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
+ 
+
 ## How To Contribute
 
 We welcome [issues](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action/issues) to and [pull requests](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action/pulls) against this repository!
