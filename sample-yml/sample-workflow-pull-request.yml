@@ -22,7 +22,7 @@ jobs:
     steps:
       # Extracts the Org name from GitHub's environment variables and stores in another env variable.
       - name: Get the Organization Name
-        run: echo ::set-env name=ORG_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')
+        run: echo "ORG_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')" >> $GITHUB_ENV
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout the code
         uses: actions/checkout@v2

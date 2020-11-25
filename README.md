@@ -33,6 +33,20 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 | break_build | true | Break build based on results? | Boolean | No | false |
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |
 | github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | \CxServer\SP\Company |
+| scanners | sast,ast,cxgo,sca | Vulnerability Scanners (sast, sca, ast, cxgo) | String | Yes | N/A |
+| sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | https://api.scacheckmarx.com  |
+| sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | https://sca.scacheckmarx.com |
+| sca_access_control_url | https://platform.checkmarx.net | Access control URL for SCA scan | String | No | https://platform.checkmarx.net |
+| sca_tenant | SCA-COMPANY_NAME | Tenant for the SCA project | String | No | N/A |
+| sca_username | ${{ secrets.SCA_USERNAME }} | Username for SCA scan | String | No | N/A |
+| sca_password | ${{ secrets.SCA_PASSWORD }} | Password for SCA scan | Secure String | No | N/A |
+| cxgo_base_url | https://api.checkmarx.net | Base URL for CxGo Scan | String | No | https://api.checkmarx.net |
+| cxgo_portal_url | https://cloud.checkmarx.net | Portal URL for CxGo Scan | String | No | https://cloud.checkmarx.net |
+| cxgo_client_secret | ${{ secrets.CXGO_CLIENT_SECRET }} | CxGo Client secret | Secure String | No | N/A |
+| ast_webapp_url | https://ast.checkmarx.com/ | WebApp URL for AST scan | String | No | N/A |
+| ast_api_url | https://ast-api.checkmarx.com/ | API URL for AST scan | String | No | N/A |
+| ast_client_id | AST_Company | Client ID for scan | String | No | N/A |
+| ast_client_secret | ${{ secrets.AST_CLIENT_SECRET }} | AST Client secret | Secure String | No | N/A |
 | params | --severity=High --bug-tracker=Json | Any additional parameters for CxFlow.  See the [following](https://github.com/checkmarx-ltd/cx-flow) | String | No | |
 
 ## Secrets
@@ -43,6 +57,11 @@ _Note: It is recommentded to leverage secrets for any sensitive inputs_
 * checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
 * checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
 * github_token: ${{ secrets.GITHUB_TOKEN }}
+* sca_username: ${{ secrets.SCA_USERNAME }}
+* sca_password: ${{ secrets.SCA_PASSWORD }}
+* cxgo_client_secret: ${{ secrets.CXGO_CLIENT_SECRET }}
+* ast_client_secret: ${{ secrets.AST_CLIENT_SECRET }}
+
 
 
 ## Outputs
@@ -83,6 +102,15 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
 ## Sample Output (Security Alerts)
 
 ![Sample Alert](images/sample-sarif-alert.png)
+
+## Sample Workflow files
+
+ * [Github PUSH workflow for AST](sample-yml/checkmarx-ast-scan-push.yml)
+ * [Github PUSH workflow for SAST](sample-yml/checkmarx-sast-scan-push.yml)
+ * [Github PUSH workflow for CxGo](sample-yml/checkmarx-cxgo-scan-push.yml)
+ * [Github PUSH workflow for SCA](sample-yml/checkmarx-sca-scan-push.yml)
+ * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
+ 
 
 ## How To Contribute
 

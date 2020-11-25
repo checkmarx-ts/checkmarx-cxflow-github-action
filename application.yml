@@ -17,22 +17,7 @@ cx-flow:
   mitre-url: https://cwe.mitre.org/data/definitions/%s.html
   zip-exclude: ""
   break-build: false
-  enabled-vulnerability-scanners:
-    #- sca
-    - sast
-  
-checkmarx:
-  base-url: ${CHECKMARX_BASE_URL}
-  url: ${CHECKMARX_BASE_URL}/cxrestapi
-  scan-preset: Checkmarx Default
-  configuration: Default Configuration
-  team: \CxServer\SP\Company
-  scan-timeout: 120
-  portal-url: ${CHECKMARX_BASE_URL}/cxwebinterface/Portal/CxWebService.asmx
-  #project-script: ./CxProject.groovy
-  #team-script: ./CxTeam.groovy
-  #exclude-files:
-  #exclude-folders:
+  enabled-vulnerability-scanners: ${SCANNERS}
 
 github:
   url: https://github.com

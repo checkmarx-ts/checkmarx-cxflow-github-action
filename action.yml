@@ -9,7 +9,7 @@ inputs:
   team:
     required: true
     description: 'Select a Checkmarx Team'
-    default: '\CxServer\SP\Company'
+    default: '/CxServer/SP/Company'
   checkmarx_username:
     required: true
     description: 'Provide Checkmarx Username'
@@ -50,6 +50,65 @@ inputs:
     required: false
     default: ''
     description: 'GitHub API Token'
+  scanners:
+    required: true
+    default: ''
+    description: 'Vulnerability Scanners (sast, sca, ast, cxgo)'
+######### SCA Properties ##########
+  sca_api_url:
+    required: false
+    description: 'Provide SCA API URL'
+    default: 'https://api.scacheckmarx.com'
+  sca_app_url:
+    required: false
+    description: 'Provide SCA APP URL'
+    default: 'https://sca.scacheckmarx.com'
+  sca_access_control_url:
+    required: false
+    description: 'Provide SCA Access Control URL'
+    default: 'https://platform.checkmarx.net'
+  sca_tenant:
+    required: false
+    description: 'Provide SCA Tenant'
+    default: ''
+  sca_username:
+    required: false
+    description: 'Provide SCA Username'
+    default: ''
+  sca_password:
+    required: false
+    description: 'Provide SCA Password'
+    default: ''
+  ######### CxGo Properties ##########
+  cxgo_client_secret:
+    required: false
+    description: 'Provide CxGo Client Secret'
+    default: ''
+  cxgo_base_url:
+    required: false
+    description: 'Provide CxGo API URL'
+    default: 'https://api.checkmarx.net'
+  cxgo_portal_url:
+    required: false
+    description: 'Provide CxGo Portal URL'
+    default: 'https://cloud.checkmarx.net'
+  ######### AST Properties ##########
+  ast_api_url:
+    required: false
+    description: 'Provide AST API URL'
+    default: ''
+  ast_webapp_url:
+    required: false
+    description: 'Provide AST WebApp URL'
+    default: ''
+  ast_client_id:
+    required: false
+    description: 'Provide AST Client ID'
+    default: ''
+  ast_client_secret:
+    required: false
+    description: 'Provide AST Client Secret'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -66,6 +125,21 @@ runs:
     - ${{ inputs.break_build }}
     - ${{ inputs.params }}
     - ${{ inputs.github_token }}
+    - ${{ inputs.scanners }}
+    - ${{ inputs.sca_api_url }}
+    - ${{ inputs.sca_app_url }}
+    - ${{ inputs.sca_access_control_url }}
+    - ${{ inputs.sca_tenant }}
+    - ${{ inputs.sca_username }}
+    - ${{ inputs.sca_password }}
+    - ${{ inputs.cxgo_client_secret }}
+    - ${{ inputs.cxgo_base_url }}
+    - ${{ inputs.cxgo_portal_url }}
+    - ${{ inputs.ast_api_url }}
+    - ${{ inputs.ast_webapp_url }}
+    - ${{ inputs.ast_client_id }}
+    - ${{ inputs.ast_client_secret }}
+
   env:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
@@ -79,6 +153,21 @@ runs:
     CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
     CXFLOW_PARAMS: ${{ inputs.params }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
+    SCANNERS: ${{ inputs.scanners }}
+    SCA_API_URL: ${{ inputs.sca_api_url }}
+    SCA_APP_URL: ${{ inputs.sca_app_url }}
+    SCA_ACCESS_CONTROL_URL: ${{ inputs.sca_access_control_url }}
+    SCA_TENANT: ${{ inputs.sca_tenant }}
+    SCA_USERNAME: ${{ inputs.sca_username }}
+    SCA_PASSWORD: ${{ inputs.sca_password }}
+    CXGO_CLIENT_SECRET: ${{ inputs.cxgo_client_secret }}
+    CXGO_BASE_URL: ${{ inputs.cxgo_base_url }}
+    CXGO_PORTAL_URL: ${{ inputs.cxgo_portal_url }}
+    AST_API_URL: ${{ inputs.ast_api_url }}
+    AST_WEBAPP_URL: ${{ inputs.ast_webapp_url }}
+    AST_CLIENT_ID: ${{ inputs.ast_client_id }}
+    AST_CLIENT_SECRET: ${{ inputs.ast_client_secret }}
+
 branding:
   icon: 'check'
   color: 'green'
