@@ -1,7 +1,0 @@
-ast:
-  apiUrl: ${AST_API_URL}
-  webAppUrl: ${ast.apiUrl}
-  clientId: ${AST_CLIENT_ID}
-  clientSecret: ${AST_CLIENT_SECRET}
-  preset: ${CHECKMARX_SCAN_PRESET}
-  incremental: ${CHECKMARX_INCREMENTAL}

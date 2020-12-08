@@ -1,7 +1,0 @@
-sca:
-  appUrl: ${SCA_APP_URL}
-  apiUrl: ${SCA_API_URL}
-  accessControlUrl: ${SCA_ACCESS_CONTROL_URL}
-  tenant: ${SCA_TENANT}
-  username: ${SCA_USERNAME}
-  password: ${SCA_PASSWORD}
