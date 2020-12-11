@@ -20,20 +20,21 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 
 ## Inputs
 
-| Variable  | Example Value | Description | Type | Required | Default |
+| Variable  | Example Value &nbsp;| Description &nbsp; | Type | Required | Default |
 | ------------- | ------------- | ------------- |------------- | ------------- | ------------- |
 | checkmarx_url | https://checkmarx.company.com | Checkmarx Server URL | String | Yes | N/A
 | checkmarx_username | ${{ secrets.CHECKMARX_USERNAME }} | Checkmarx Username | String | Yes | N/A
 | checkmarx_password | ${{ secrets.CHECKMARX_PASSWORD }} | Checkmarx Password | Secure String | Yes | N/A
 | checkmarx_client_secret | ${{ secrets.CHECKMARX_CLIENT_SECRET }} | Checkmarx OIDC Client Secret  Reference [1](https://checkmarx.atlassian.net/wiki/spaces/KC/pages/1187774721/Using+the+CxSAST+REST+API+v8.6.0+and+up), [2](https://checkmarx.atlassian.net/wiki/spaces/KC/pages/1187774721/Using+the+CxSAST+REST+API+v8.6.0+and+up) | Secure String | Yes |
-| team | \CxServer\SP\Company | Checkmarx Team for Project | String | No | \CxServer\SP\Company |
+| team | /CxServer/SP/Company | Checkmarx Team for Project | String | No | /CxServer/SP/Company |
 | project | ProjectName | Checkmarx Project | String | Yes | N/A |
 | app | AppID-1234 | Unique Application Identifier used by downstream bug trackers (i.e. Jira) | String | No | SampleApp |
 | preset | Checkmarx Express | Checkmarx scan preset (SAST) | String | No | Checkmarx Default |
 | break_build | true | Break build based on results? | Boolean | No | false |
+| bug_tracker | Sarif, GitHubPull, GitHub | Bug-tracker used for scan results | String | No | Sarif |
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |
-| github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | \CxServer\SP\Company |
-| scanners | sast,ast,cxgo,sca | Vulnerability Scanners (sast, sca, ast, cxgo) | String | Yes | N/A |
+| github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | ${{ github.token }} |
+| scanners | sast, ast, cxgo, sca | Vulnerability Scanners (sast, sca, ast, cxgo). Multiple comma seperated values allowed. | String | Yes | None |
 | sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | https://api.scacheckmarx.com  |
 | sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | https://sca.scacheckmarx.com |
 | sca_access_control_url | https://platform.checkmarx.net | Access control URL for SCA scan | String | No | https://platform.checkmarx.net |
@@ -47,7 +48,7 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 | ast_api_url | https://ast-api.checkmarx.com/ | API URL for AST scan | String | No | N/A |
 | ast_client_id | AST_Company | Client ID for scan | String | No | N/A |
 | ast_client_secret | ${{ secrets.AST_CLIENT_SECRET }} | AST Client secret | Secure String | No | N/A |
-| params | --severity=High --bug-tracker=Json | Any additional parameters for CxFlow.  See the [following](https://github.com/checkmarx-ltd/cx-flow) | String | No | |
+| params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  See the [following](https://github.com/checkmarx-ltd/cx-flow) | String | No | |
 
 ## Secrets
 
@@ -83,10 +84,10 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
     - uses: actions/checkout@v2
     # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@1.0
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
       with:
         project: GithubActionTest
-        team: '\CxServer\SP\Checkmarx'
+        team: '/CxServer/SP/Checkmarx'
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}

@@ -38,6 +38,10 @@ inputs:
     required: false
     default: false
     description: 'Break build based on Checkmarx findings?'
+  bug_tracker:
+    required: false
+    default: Sarif
+    description: 'Bug tracker for the scan results.'
   incremental:
     required: false
     default: true
@@ -48,7 +52,7 @@ inputs:
     description: 'Additional CLI parameters'
   github_token:
     required: false
-    default: ''
+    default: ${{ github.token }}
     description: 'GitHub API Token'
   scanners:
     required: true
@@ -144,6 +148,7 @@ runs:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
     CHECKMARX_USERNAME: ${{ inputs.checkmarx_username }}
     CHECKMARX_PASSWORD: ${{ inputs.checkmarx_password }}
     CHECKMARX_CLIENT_SECRET: ${{ inputs.checkmarx_client_secret }}
@@ -152,21 +157,23 @@ runs:
     CHECKMARX_INCREMENTAL: ${{ inputs.incremental }}
     CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
     CXFLOW_PARAMS: ${{ inputs.params }}
-    GITHUB_TOKEN: ${{ inputs.github_token }}
-    SCANNERS: ${{ inputs.scanners }}
-    SCA_API_URL: ${{ inputs.sca_api_url }}
-    SCA_APP_URL: ${{ inputs.sca_app_url }}
-    SCA_ACCESS_CONTROL_URL: ${{ inputs.sca_access_control_url }}
+    CX_FLOW_ENABLED_VULNERABILITY_SCANNERS: ${{ inputs.scanners }}
+    CX_FLOW_BUG_TRACKER: ${{ inputs.bug_tracker }}
+    SCA_APIURL: ${{ inputs.sca_api_url }}
+    SCA_APPURL: ${{ inputs.sca_app_url }}
+    SCA_ACCESSCONTROLURL: ${{ inputs.sca_access_control_url }}
     SCA_TENANT: ${{ inputs.sca_tenant }}
     SCA_USERNAME: ${{ inputs.sca_username }}
     SCA_PASSWORD: ${{ inputs.sca_password }}
     CXGO_CLIENT_SECRET: ${{ inputs.cxgo_client_secret }}
     CXGO_BASE_URL: ${{ inputs.cxgo_base_url }}
     CXGO_PORTAL_URL: ${{ inputs.cxgo_portal_url }}
-    AST_API_URL: ${{ inputs.ast_api_url }}
-    AST_WEBAPP_URL: ${{ inputs.ast_webapp_url }}
-    AST_CLIENT_ID: ${{ inputs.ast_client_id }}
-    AST_CLIENT_SECRET: ${{ inputs.ast_client_secret }}
+    AST_APIURL: ${{ inputs.ast_api_url }}
+    AST_WEBAPPURL: ${{ inputs.ast_webapp_url }}
+    AST_CLIENTID: ${{ inputs.ast_client_id }}
+    AST_CLIENTSECRET: ${{ inputs.ast_client_secret }}
+    AST_PRESET: ${{ inputs.preset }}
+    AST_INCREMENTAL: ${{ inputs.incremental }}
 
 branding:
   icon: 'check'
