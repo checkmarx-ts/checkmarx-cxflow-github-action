@@ -1,0 +1,41 @@
+# This workflow is to automate Checkmarx AST Cloud scans.  It runs on a push to the main branch.
+#
+# The following GitHub Secrets must be first defined:
+#   - CHECKMARX_GO_CLIENT_SECRET
+#
+# The following variables must be inserted below:
+#   - <ProjectName>
+#
+# For full documentation, including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
+
+name: Checkmarx AST Cloud Scan
+on:
+  push:
+    branches:
+      - main
+      - master
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 # Github Action version
+      with:
+        project: <ProjectName> # <-- Insert Checkmarx AST Cloud Project Name
+        team: \Demo\CxFlow\
+        cxgo_client_secret: ${{ secrets.CHECKMARX_GO_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        cxgo_base_url: https://api.checkmarx.net
+        cxgo_portal_url: https://cloud.checkmarx.net
+        break_build: false
+        scanners: cxgo
+        bug_tracker: Sarif
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.ref }}
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: ./cx.sarif
+

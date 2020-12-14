@@ -1,4 +1,16 @@
+# This workflow is to automate Checkmarx AST scans.  It runs on a push to the main branch.
+#
+# The following GitHub Secrets must be first defined:
+#   - AST_CLIENT_SECRET
+#
+# The following variables must be inserted below:
+#   - <ProjectName>
+#   - <url-for-ast>
+#
+# For full documentation, including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
+
 name: Checkmarx AST Scan
+
 on:
   push:
     branches:
@@ -11,22 +23,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 # GitHub Action version
       with:
-        project: <ProjectName>
-        ast_api_url: <url-for-ast>
-        ast_webapp_url: <url-for-ast>
-        ast_client_id: CxFlow #client-id confgiured within AST portal.
-        ast_client_secret: ${{ secrets.AST_CLIENT_SECRET }} #To be stored in GitHub Secrets.
+        project: <ProjectName> # <-- Insert Checkmarx AST Project Name
+        ast_api_url: <url-for-ast> # <-- Insert Checkmarx AST API URL 
+        ast_webapp_url: <url-for-ast> # <-- Insert Checkmarx WebApp URL
+        ast_client_id: CxFlow # client-id confgiured within AST portal.
+        ast_client_secret: ${{ secrets.AST_CLIENT_SECRET }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: ast
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.ref }}
-
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: cx.sarif
-
