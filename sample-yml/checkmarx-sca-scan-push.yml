@@ -1,3 +1,16 @@
+# This workflow is to automate Checkmarx SCA scans.  It runs on a push to the main branch.
+#
+# The following GitHub Secrets must be first defined:
+#   - CHECKMARX_SCA_USERNAME
+#   - CHECKMARX_SCA_PASSWORD
+#
+# The following variables must be inserted below:
+#   - <ProjectName>
+#   - <SCATenant>
+#   - <GitHubRepoUrl>
+#
+# For full documentation, including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
+
 name: Checkmarx SCA Scan
 on:
   push:
@@ -11,24 +24,22 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 # GitHub Action version
       with:
-        project: <ProjectName>
+        project: <ProjectName>  # <-- Insert Checkmarx CxSCA Project Name
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
         sca_access_control_url: https://platform.checkmarx.net
-        sca_tenant: <SCATenant>
-        sca_username: ${{ secrets.CX_SCA_USERNAME }} #To be stored in GitHub Secrets.
-        sca_password: ${{ secrets.CX_SCA_PASSWORD }} #To be stored in GitHub Secrets.
+        sca_tenant: <SCATenant>  # <-- Insert Checkmarx CxSCA Tenant
+        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
+        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: sca
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.ref	}}  --repo-url="<GitHubRepoUrl>"
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="<GitHubRepoUrl>"
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: cx.sarif
-
