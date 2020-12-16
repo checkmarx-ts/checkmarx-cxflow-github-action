@@ -48,7 +48,7 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 | ast_api_url | https://ast-api.checkmarx.com/ | API URL for AST scan | String | No | N/A |
 | ast_client_id | AST_Company | Client ID for scan | String | No | N/A |
 | ast_client_secret | ${{ secrets.AST_CLIENT_SECRET }} | AST Client secret | Secure String | No | N/A |
-| params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  See the [following](https://github.com/checkmarx-ltd/cx-flow) | String | No | |
+| params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  For a full list of all the parameters, see the [following](https://github.com/checkmarx-ltd/cx-flow/wiki/Configuration) | String | No | |
 
 ## Secrets
 
@@ -69,7 +69,7 @@ _Note: It is recommentded to leverage secrets for any sensitive inputs_
 
 The default output format for this GitHub Action is a [SARIF](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/sarif-support-for-code-scanning) output report stored in the working directory as **./cx.sarif**
 
-CxFlow supports various output formats and defect management integration.  See the [following](https://github.com/checkmarx-ltd/cx-flow).  
+For full documentation on all the supported output formats and defect management integration, please see the [following](https://github.com/checkmarx-ltd/cx-flow/wiki/Bug-Trackers-and-Feedback-Channels).  
 
 ### `SARIF Report`
 
@@ -108,7 +108,7 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
 
  * [Github PUSH workflow for AST](sample-yml/checkmarx-ast-scan-push.yml)
  * [Github PUSH workflow for SAST](sample-yml/checkmarx-sast-scan-push.yml)
- * [Github PUSH workflow for CxGo](sample-yml/checkmarx-cxgo-scan-push.yml)
+ * [Github PUSH workflow for AST Cloud](sample-yml/checkmarx-astcloud-scan-push.yml)
  * [Github PUSH workflow for SCA](sample-yml/checkmarx-sca-scan-push.yml)
  * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
  
