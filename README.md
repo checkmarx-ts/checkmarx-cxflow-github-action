@@ -29,7 +29,7 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 | team | /CxServer/SP/Company | Checkmarx Team for Project | String | No | /CxServer/SP/Company |
 | project | ProjectName | Checkmarx Project | String | Yes | N/A |
 | app | AppID-1234 | Unique Application Identifier used by downstream bug trackers (i.e. Jira) | String | No | SampleApp |
-| preset | Checkmarx Express | Checkmarx scan preset (SAST) | String | No | Checkmarx Default |
+| preset | Checkmarx Express | Checkmarx scan preset (SAST) | String | No | High and Medium |
 | break_build | true | Break build based on results? | Boolean | No | false |
 | bug_tracker | Sarif, GitHubPull, GitHub | Bug-tracker used for scan results | String | No | Sarif |
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |

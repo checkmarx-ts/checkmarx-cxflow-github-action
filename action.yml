@@ -32,7 +32,7 @@ inputs:
     description: 'Select an Application Name used by downstream bug tracker systems'  
   preset:
     required: false
-    default: 'Checkmarx Default'
+    default: 'High and Medium'
     description: 'Select a Checkmarx Preset'
   break_build:
     required: false
