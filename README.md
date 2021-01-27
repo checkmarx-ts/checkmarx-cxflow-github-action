@@ -20,7 +20,7 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 
 ## Version Compatiblity
 
-The GitHub action (https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action) is only compatible with Checkmarx SAST 9.x , Checkmarx SCA and Checkmarx AST Cloud.
+The GitHub action ![Latest Release](https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action) is only compatible with Checkmarx SAST 9.x , Checkmarx SCA and Checkmarx AST Cloud.
 
 ## Inputs
 
