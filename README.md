@@ -18,6 +18,10 @@ This is a Wrapper to trigger scans the latest version of CxFlow through Docker t
 
 Please find more info in the official website: <a href="www.checkmarx.com">Checkmarx.com</a>
 
+## Version Compatiblity
+
+The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action)](https://github.com/checkmarx-ts/checkmarx-github-action/releases)  is only compatible with Checkmarx SAST 9.x , Checkmarx SCA and Checkmarx AST Cloud.
+
 ## Inputs
 
 | Variable  | Example Value &nbsp;| Description &nbsp; | Type | Required | Default |
