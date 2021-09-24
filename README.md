@@ -68,7 +68,7 @@ _Note: For filtering files in the params input, it is necessary to escape specia
 
 Here is an example of filtering files:
 
---cx-flow.zip-exclude="\.git\/.*,\.github\/.*,apps\/tests\/.*,apps\/docs\/.*,apps\/web\/.*"
+--cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,apps\\/tests\\/.\*,apps\\/docs\/.\*,apps\\/web\\/.\*"
 
 ## Outputs
 
@@ -103,7 +103,6 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
       with:
         sarif_file: cx.sarif
 ```
-
 
 ## Sample Output (Security Alerts)
 
