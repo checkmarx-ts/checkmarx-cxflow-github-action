@@ -57,7 +57,7 @@ inputs:
   scanners:
     required: true
     default: ''
-    description: 'Vulnerability Scanners (sast, sca, ast, cxgo)'
+    description: 'Vulnerability Scanners (sast, sca, cxgo)'
 ######### SCA Properties ##########
   sca_api_url:
     required: false
@@ -96,23 +96,6 @@ inputs:
     required: false
     description: 'Provide CxGo Portal URL'
     default: 'https://cloud.checkmarx.net'
-  ######### AST Properties ##########
-  ast_api_url:
-    required: false
-    description: 'Provide AST API URL'
-    default: ''
-  ast_webapp_url:
-    required: false
-    description: 'Provide AST WebApp URL'
-    default: ''
-  ast_client_id:
-    required: false
-    description: 'Provide AST Client ID'
-    default: ''
-  ast_client_secret:
-    required: false
-    description: 'Provide AST Client Secret'
-    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -139,10 +122,6 @@ runs:
     - ${{ inputs.cxgo_client_secret }}
     - ${{ inputs.cxgo_base_url }}
     - ${{ inputs.cxgo_portal_url }}
-    - ${{ inputs.ast_api_url }}
-    - ${{ inputs.ast_webapp_url }}
-    - ${{ inputs.ast_client_id }}
-    - ${{ inputs.ast_client_secret }}
 
   env:
     TEAM: "${{ inputs.team }}"
@@ -168,12 +147,6 @@ runs:
     CXGO_CLIENT_SECRET: ${{ inputs.cxgo_client_secret }}
     CXGO_BASE_URL: ${{ inputs.cxgo_base_url }}
     CXGO_PORTAL_URL: ${{ inputs.cxgo_portal_url }}
-    AST_APIURL: ${{ inputs.ast_api_url }}
-    AST_WEBAPPURL: ${{ inputs.ast_webapp_url }}
-    AST_CLIENTID: ${{ inputs.ast_client_id }}
-    AST_CLIENTSECRET: ${{ inputs.ast_client_secret }}
-    AST_PRESET: ${{ inputs.preset }}
-    AST_INCREMENTAL: ${{ inputs.incremental }}
 
 branding:
   icon: 'check'
