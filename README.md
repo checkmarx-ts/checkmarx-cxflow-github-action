@@ -6,7 +6,7 @@
 
 Checkmarx CxFlow GitHub Action with SARIF output.  
 
-Publish Security Alerts (CodeQL) associated with the code in your Github Repository using Checkmarx with this Github Action Integration. 
+Publish Security Alerts associated with the code in your Github Repository using Checkmarx with this Github Action Integration. 
 
 This is a Wrapper to trigger scans the latest version of CxFlow through Docker to launch Checkmarx SAST or SCA Scans.
 
@@ -14,13 +14,13 @@ This is a Wrapper to trigger scans the latest version of CxFlow through Docker t
 
 * Checkmarx SAST (**CxSAST**) is an enterprise-grade flexible and accurate static analysis solution used to identify hundreds of security vulnerabilities in custom code. It is used by development, DevOps, and security teams to scan source code early in the SDLC, identify vulnerabilities and provide actionable insights to remediate them. 
 * Checkmarx SCA (**CxSCA**) is an effective next-gen software composition analysis solution designed to help development teams ship secure software quickly while giving AppSec teams the insight and control they need to improve your software security risk posture.
-* Checkmarx Flow (**CxFlow**) is an SDLC orchestration module managing AST scan initiation and results manangement.
+* Checkmarx Flow (**CxFlow**) is an SDLC orchestration module managing Applciaton Security Test (AST) scan initiation and results manangement.
 
 Please find more info in the official website: <a href="www.checkmarx.com">Checkmarx.com</a>
 
 ## Version Compatiblity
 
-The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action)](https://github.com/checkmarx-ts/checkmarx-github-action/releases)  is only compatible with Checkmarx SAST 9.x , Checkmarx SCA and Checkmarx AST Cloud.
+The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action)](https://github.com/checkmarx-ts/checkmarx-github-action/releases)  is only compatible with Checkmarx SAST 9.x and Checkmarx CxSCA.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 | bug_tracker | Sarif, GitHubPull, GitHub | Bug-tracker used for scan results | String | No | Sarif |
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |
 | github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | ${{ github.token }} |
-| scanners | sast, ast, cxgo, sca | Vulnerability Scanners (sast, sca, ast, cxgo). Multiple comma seperated values allowed. | String | Yes | None |
+| scanners | sast, cxgo, sca | Vulnerability Scanners (sast, sca, cxgo). Multiple comma seperated values allowed. | String | Yes | None |
 | sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | https://api.scacheckmarx.com  |
 | sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | https://sca.scacheckmarx.com |
 | sca_access_control_url | https://platform.checkmarx.net | Access control URL for SCA scan | String | No | https://platform.checkmarx.net |
@@ -48,11 +48,7 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 | cxgo_base_url | https://api.checkmarx.net | Base URL for CxGo Scan | String | No | https://api.checkmarx.net |
 | cxgo_portal_url | https://cloud.checkmarx.net | Portal URL for CxGo Scan | String | No | https://cloud.checkmarx.net |
 | cxgo_client_secret | ${{ secrets.CXGO_CLIENT_SECRET }} | CxGo Client secret | Secure String | No | N/A |
-| ast_webapp_url | https://ast.checkmarx.com/ | WebApp URL for AST scan | String | No | N/A |
-| ast_api_url | https://ast-api.checkmarx.com/ | API URL for AST scan | String | No | N/A |
-| ast_client_id | AST_Company | Client ID for scan | String | No | N/A |
-| ast_client_secret | ${{ secrets.AST_CLIENT_SECRET }} | AST Client secret | Secure String | No | N/A |
-| params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  For a full list of all the parameters, see the [following](https://github.com/checkmarx-ltd/cx-flow/wiki/Configuration) | String | No | |
+| params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  For a full list of all the parameters, see the [following](https://github.com/checkmarx-ltd/cx-flow/wiki/Configuration).  Special note about [filtering](#Filters) | String | No | |
 
 ## Secrets
 
@@ -65,9 +61,14 @@ _Note: It is recommentded to leverage secrets for any sensitive inputs_
 * sca_username: ${{ secrets.SCA_USERNAME }}
 * sca_password: ${{ secrets.SCA_PASSWORD }}
 * cxgo_client_secret: ${{ secrets.CXGO_CLIENT_SECRET }}
-* ast_client_secret: ${{ secrets.AST_CLIENT_SECRET }}
 
+## Filters
 
+_Note: For filtering files in the params input, it is necessary to escape special characters_
+
+Here is an example of filtering files:
+
+--cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,apps\\/tests\\/.\*,apps\\/docs\/.\*,apps\\/web\\/.\*"
 
 ## Outputs
 
@@ -103,16 +104,13 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
         sarif_file: cx.sarif
 ```
 
-
 ## Sample Output (Security Alerts)
 
 ![Sample Alert](images/sample-sarif-alert.png)
 
 ## Sample Workflow files
 
- * [Github PUSH workflow for AST](sample-yml/checkmarx-ast-scan-push.yml)
  * [Github PUSH workflow for SAST](sample-yml/checkmarx-sast-scan-push.yml)
- * [Github PUSH workflow for AST Cloud](sample-yml/checkmarx-astcloud-scan-push.yml)
  * [Github PUSH workflow for SCA](sample-yml/checkmarx-sca-scan-push.yml)
  * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
  
