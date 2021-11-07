@@ -30,7 +30,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
       with:
         project: ${{ github.repository }}
         team: /CxServer/TeamName

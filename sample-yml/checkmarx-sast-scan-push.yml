@@ -27,7 +27,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3 #Github Action version
       with:
         project: <ProjectName> # <-- Insert Checkmarx SAST Project Name
         team: /CxServer/TeamName

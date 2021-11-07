@@ -89,7 +89,7 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
     - uses: actions/checkout@v2
     # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
       with:
         project: GithubActionTest
         team: '/CxServer/SP/Checkmarx'
