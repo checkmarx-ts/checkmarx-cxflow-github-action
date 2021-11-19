@@ -92,7 +92,7 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
       with:
         project: GithubActionTest
-        team: '/CxServer/SP/Checkmarx'
+        team: /CxServer/SP/Checkmarx
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
