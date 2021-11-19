@@ -96,6 +96,11 @@ inputs:
     required: false
     description: 'Provide CxGo Portal URL'
     default: 'https://cloud.checkmarx.net'
+  ######### Java/JVM Properties ##########
+  java_opts: 
+    required: false
+    description: Java options will be passed to java
+    default: -XX:+PrintFlagsFinal -XshowSettings:all -XX:MaxRAMPercentage=75.0
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -122,6 +127,7 @@ runs:
     - ${{ inputs.cxgo_client_secret }}
     - ${{ inputs.cxgo_base_url }}
     - ${{ inputs.cxgo_portal_url }}
+    - ${{ inputs.java_opts }}
 
   env:
     TEAM: "${{ inputs.team }}"
@@ -147,6 +153,7 @@ runs:
     CXGO_CLIENT_SECRET: ${{ inputs.cxgo_client_secret }}
     CXGO_BASE_URL: ${{ inputs.cxgo_base_url }}
     CXGO_PORTAL_URL: ${{ inputs.cxgo_portal_url }}
+    JAVA_OPTS: ${{ inputs.java_opts }}
 
 branding:
   icon: 'check'
