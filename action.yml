@@ -100,7 +100,7 @@ inputs:
   java_opts: 
     required: false
     description: Java options will be passed to java
-    default: -XX:+PrintFlagsFinal -XshowSettings:all -XX:MaxRAMPercentage=75.0
+    default: -XX:MaxRAMPercentage=75.0
 runs:
   using: 'docker'
   image: 'Dockerfile'
