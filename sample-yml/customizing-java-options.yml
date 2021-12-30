@@ -27,10 +27,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action version
       with:
-        project: <ProjectName> # <-- Insert Checkmarx SAST Project Name
-        team: /CxServer/TeamName
+        project: ${{ secrets.CHECKMARX_PROJECT }} # <-- Insert Checkmarx SAST Project Name
+        team: ${{ secrets.CHECKMARX_TEAMS }}
         checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
@@ -39,7 +39,7 @@ jobs:
         scanners: sast
         bug_tracker: Sarif
         java_opts: -XX:+PrintFlagsFinal -XshowSettings:all -XX:MaxRAMPercentage=75.0 # Customize java options here
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filterSeverity --cx-flow.filterCategory
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
