@@ -48,6 +48,15 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 | cxgo_base_url | https://api.checkmarx.net | Base URL for CxGo Scan | String | No | https://api.checkmarx.net |
 | cxgo_portal_url | https://cloud.checkmarx.net | Portal URL for CxGo Scan | String | No | https://cloud.checkmarx.net |
 | cxgo_client_secret | ${{ secrets.CXGO_CLIENT_SECRET }} | CxGo Client secret | Secure String | No | N/A |
+|jira_url | ${{ secrets.JIRA_URL }} | Jira Url | Secure String | No | N/A | 
+|jira_username | ${{ secrets.JIRA_USERNAME }} | Jira Username | Secure String | No | N/A |
+|jira_token | ${{ secrets.JIRA_TOKEN }} | Jira Secret. This is personal access token, not password. | Secure String | No | N/A |
+|jira_project | ${{ secrets.JIRA_PROJECT }} | Jira Project Name | Secure String | No | N/A |
+|jira_issue_type | 'Application Security Bug' | Jira Issue Type | String | No | N/A |
+|jira_open_transition | 'In Progress' | Jira Open Transition Status | String | No | N/A |
+|jira_close_transition | 'Done' | Jira Close Transition Status | String | No | N/A |
+|jira_open_status | 'Backlog,Selected for Development,In Progress' | Jira Open Status | String | No | N/A |
+|jira_closed_status | 'Done' | Jira Closed Status | String | No | N/A |
 | params | --severity=High --branch=${{ github.ref }}| Any additional parameters for CxFlow.  For a full list of all the parameters, see the [following](https://github.com/checkmarx-ltd/cx-flow/wiki/Configuration).  Special note about [filtering](#Filters) | String | No | |
 
 ## Secrets
@@ -61,6 +70,11 @@ _Note: It is recommentded to leverage secrets for any sensitive inputs_
 * sca_username: ${{ secrets.SCA_USERNAME }}
 * sca_password: ${{ secrets.SCA_PASSWORD }}
 * cxgo_client_secret: ${{ secrets.CXGO_CLIENT_SECRET }}
+* jira_url: ${{ secrets.JIRA_URL }}
+* jira_username: ${{ secrets.JIRA_USERNAME }}
+* jira_token: ${{ secrets.JIRA_TOKEN }}
+* jira_project: ${{ secrets.JIRA_PROJECT }}
+
 
 ## Filters
 
