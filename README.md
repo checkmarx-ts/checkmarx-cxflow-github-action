@@ -84,7 +84,7 @@ Here is an example of filtering files:
 
 --cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,apps\\/tests\\/.\*,apps\\/docs\/.\*,apps\\/web\\/.\*"
 
-* Excluding the .git and .github folders from the zip file is highly important! Otherwise each commit will triger a full scan due to changes in the files under this folders
+* Excluding the .git and .github folders from the zip file is highly important! Otherwise each commit will trigger a full scan due to changes in the files under this folders
 * To recursively exclude all files under any folder named "tests" for example, add the following to the -cx-flow.zip-exclude line:
 --cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,tests\\/.\*,.\+\\/tests\\/.\*"
 
