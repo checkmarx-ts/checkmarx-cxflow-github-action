@@ -84,6 +84,10 @@ Here is an example of filtering files:
 
 --cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,apps\\/tests\\/.\*,apps\\/docs\/.\*,apps\\/web\\/.\*"
 
+* Excluding the .git and .github folders from the zip file is highly important! Otherwise each commit will trigger a full scan due to changes in the files under these folders
+* To recursively exclude all files under any folder named "tests" for example, add the following to the -cx-flow.zip-exclude line:  
+--cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,tests\\/.\*,.\+\\/tests\\/.\*"
+
 ## Outputs
 
 The default output format for this GitHub Action is a [SARIF](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/sarif-support-for-code-scanning) output report stored in the working directory as **./cx.sarif**
