@@ -38,6 +38,7 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 | bug_tracker | Sarif, GitHubPull, GitHub | Bug-tracker used for scan results | String | No | Sarif |
 | incremental | true | Trigger scan as incremental? (SAST) | Boolean | No | true |
 | github_token | ${{ secrets.GITHUB_TOKEN }} | GitHub API Token, used for PR Feedback or GitHub Issue Feedback | String | No | ${{ github.token }} |
+| repo-url | ${{ github.event.repository.url }} | GitHub Repository URL, used for Issue Feedback | String | Yes | NA |
 | scanners | sast, cxgo, sca | Vulnerability Scanners (sast, sca, cxgo). Multiple comma seperated values allowed. | String | Yes | None |
 | sca_api_url | https://api.scacheckmarx.com | API URL for SCA scan | String | No | https://api.scacheckmarx.com  |
 | sca_app_url | https://sca.scacheckmarx.com | APP URL for SCA scan | String | No | https://sca.scacheckmarx.com |
