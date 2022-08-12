@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-FROM checkmarx/cx-flow
+FROM itskedar/mycxflow:cxflow
 #Copy the entrypoint script and properties used for the action
 COPY entrypoint.sh /app/entrypoint.sh
 #Make it executable
