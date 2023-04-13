@@ -139,6 +139,8 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
  * [Github PUSH workflow for SAST](sample-yml/checkmarx-sast-scan-push.yml)
  * [Github PUSH workflow for SCA](sample-yml/checkmarx-sca-scan-push.yml)
  * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
+ * [Github Cloud Local scan](sample-yml/cloud_runner_local_scan.yml)
+ * [Github Cloud Remote scan](sample-yml/remote_sample.yml)
  
 
 ## How To Contribute
