@@ -1,2 +1,0 @@
-echo "Satyam"
-ls -la
