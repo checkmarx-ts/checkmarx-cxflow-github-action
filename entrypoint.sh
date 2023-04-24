@@ -3,5 +3,5 @@ java ${JAVA_OPTS} -jar /app/cx-flow.jar --SHA=$GITHUB_SHA --spring.profiles.acti
 scanID=$(grep 'cxflowscanidextraction' scanid$GITHUB_SHA.txt | sed 's/.*cxflowscanidextractiongithubaction \(.*\)endofstatementscanidaction/\1/')
 echo $scanID
 echo "cxflowscanid=$scanID" >> $GITHUB_OUTPUT
-
+rm scanid$GITHUB_SHA.txt
 
