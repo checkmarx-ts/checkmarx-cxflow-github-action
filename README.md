@@ -69,7 +69,7 @@ Here is the example for additional parameters for CxFlow. For a full list of all
 ````
 ## Secrets
 
-_Note: It is recommentded to leverage secrets for any sensitive inputs_
+_Note: It is recommended to leverage secrets for any sensitive inputs_
 * checkmarx_url: ${{ secrets.CHECKMARX_URL }}
 * checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
 * checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
