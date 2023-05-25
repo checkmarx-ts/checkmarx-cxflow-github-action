@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-FROM satyam9889331154/githubaction123:scanIDGitAction2
+FROM satyam9889331154/githubaction123:scanprojissue
 #Copy the entrypoint script and properties used for the action
 COPY entrypoint.sh /app/entrypoint.sh
 #Make it executable
