@@ -4,12 +4,11 @@ scanID=$(grep 'cxflowscanidextraction' scanid$GITHUB_SHA.txt | sed 's/.*cxflowsc
 echo "cxflowscanid=$scanID" >> $GITHUB_OUTPUT
 rm scanid$GITHUB_SHA.txt
 EXIT_CODE=$(grep 'Finished with exit code:' cx-flow.log | tail -1 |sed 's/.*: //')
-echo $EXIT_CODE
 if [ $EXIT_CODE != 0 ]
 then
-        echo 'Exit code is Non Zero so beaking pipeline.'
+        echo 'Exit code is Non Zero so breaking pipeline.'
         exit 1
 else
-        echo 'Exit code is Zero so not beaking pipeline.'
+        echo 'CxFlow Github Action Run Successfully.'
         exit 0
 fi
