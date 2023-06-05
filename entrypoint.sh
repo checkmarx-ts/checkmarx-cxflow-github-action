@@ -7,9 +7,7 @@ rm scanid$GITHUB_SHA.txt
 EXIT_CODE=$(grep 'Finished with exit code:' cx-flow.log | tail -1 |sed 's/.*: //')
 if [ -z "$EXIT_CODE"]
 then
-		echo "Exiting With return code non zero"
         exit $JAVA_RETURN_STATUS
 else
-		echo "Exiting With return code non zeros"
         exit $EXIT_CODE
 fi
