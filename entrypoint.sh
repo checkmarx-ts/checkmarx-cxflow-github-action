@@ -5,7 +5,7 @@ scanID=$(grep 'cxflowscanidextraction' scanid$GITHUB_SHA.txt | sed 's/.*cxflowsc
 echo "cxflowscanid=$scanID" >> $GITHUB_OUTPUT
 rm scanid$GITHUB_SHA.txt
 EXIT_CODE=$(grep 'Finished with exit code:' cx-flow.log | tail -1 |sed 's/.*: //')
-if [ -z "$EXIT_CODE"]
+if [ -z "$EXIT_CODE" ]
 then
         exit $JAVA_RETURN_STATUS
 else
