@@ -4,10 +4,9 @@ JAVA_RETURN_STATUS=$(echo $?)
 scanID=$(grep 'cxflowscanidextraction' scanid$GITHUB_SHA.txt | sed 's/.*cxflowscanidextractiongithubaction \(.*\)endofstatementscanidaction/\1/')
 echo "cxflowscanid=$scanID" >> $GITHUB_OUTPUT
 rm scanid$GITHUB_SHA.txt
-EXIT_CODE=$(grep 'Finished with exit codeashdkjasjdklasjdlkasjdlkasdlkasjdlkasjdlkasjdlkasdjlkasjdlaksdjklasdjlkasjdlkasjdlaksdjlkasdjlkasdjlkasjdlkasdjlasdjlask:' cx-flow.log | tail -1 |sed 's/.*: //')
+EXIT_CODE=$(grep 'Finished with exit code:' cx-flow.log | tail -1 |sed 's/.*: //')
 if [ -z "$EXIT_CODE"]
 then
-        echo 'Givin JAVA RETUSN CODE'
         exit $JAVA_RETURN_STATUS
 else
         exit $EXIT_CODE
