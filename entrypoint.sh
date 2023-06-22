@@ -1,5 +1,10 @@
 #!/bin/sh
 echo "Satyam"
+cd ..
+ls -la
+cd ..
+ls -la
+cd ..
 ls -la
 sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore $JAVA_HOME/lib/security/cacerts -file checkmarx.crt --noprompt
 echo "Chaurasia"
