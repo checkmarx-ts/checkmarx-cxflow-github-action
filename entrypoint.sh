@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Satyam"
-sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore $JAVA_HOME/lib/security/cacerts -file checkmarx.crt --noprompt
+sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore $JAVA_HOME/jre/lib/security/cacerts -file checkmarx.crt --noprompt
 cd ..
 cd /usr/lib/jvm/java-1.8-openjdk
 ls -la
