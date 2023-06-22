@@ -101,6 +101,11 @@ inputs:
     required: false
     description: Java options will be passed to java
     default: -XX:MaxRAMPercentage=75.0
+  java_certs: 
+    required: false
+    description: Java options will be passed to java
+    default: sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore $JAVA_HOME/lib/security/cacerts -file checkmarx.crt --noprompt
+  
   ######### Jira Properties ##########
   jira_url:
     required: false
