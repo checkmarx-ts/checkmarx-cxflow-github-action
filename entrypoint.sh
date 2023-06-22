@@ -4,7 +4,7 @@ sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore
 cd ..
 cd /usr/lib/jvm/java-1.8-openjdk
 ls -la
-cd lib
+cd bin
 ls -la
 cd ..
 ls -la
