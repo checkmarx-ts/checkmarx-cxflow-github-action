@@ -4,7 +4,7 @@
 if [ -n "$EXTRA_CERTIFICATES" ]
 then
         jvm_keystore="/etc/ssl/certs/java/cacerts" # java 8 specific location
-        echo "Importing custom certificates in $EXTRA_CERTIFICATES subdirectory."
+        echo "Importing custom certificates in $EXTRA_CERTIFICATES subdirectory to '$jvm_keystore'"
         /app/keytool-import-certs.sh /github/workspace/$EXTRA_CERTIFICATES "$jvm_keystore"
 fi
 
