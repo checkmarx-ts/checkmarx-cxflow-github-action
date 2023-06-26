@@ -2,9 +2,7 @@
 set -e
 
 certs_dir="$1"
-
-# java 8 specific location
-jvm_keystore="/etc/ssl/certs/java/cacerts"
+jvm_keystore="$2"
 
 count=1
 for cert in $certs_dir/*.crt
