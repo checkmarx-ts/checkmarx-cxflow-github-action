@@ -3,7 +3,8 @@
 # import custom certificates into java cacerts keystore
 if [ -n "$EXTRA_CERTIFICATES" ]
 then
-        jvm_keystore="/etc/ssl/certs/java/cacerts" # java 8 specific location
+        #jvm_keystore="/etc/ssl/certs/java/cacerts" # java 8 specific location
+        jvm_keystore="/usr/local/openjdk-8/jre/lib/security/cacerts"
         echo "Importing custom certificates in $EXTRA_CERTIFICATES subdirectory to '$jvm_keystore'"
         /app/keytool-import-certs.sh /github/workspace/$EXTRA_CERTIFICATES "$jvm_keystore"
 fi
