@@ -58,6 +58,10 @@ inputs:
     required: true
     default: ''
     description: 'Vulnerability Scanners (sast, sca, cxgo)'
+  extra_certificates:
+    required: false
+    default: ''
+    description: 'Subdirectory containing extra X509 certificate files (.crt) to be imported into the CxFlow JRE. Example: \"certificates\"'
 ######### SCA Properties ##########
   sca_api_url:
     required: false
@@ -101,11 +105,6 @@ inputs:
     required: false
     description: Java options will be passed to java
     default: -XX:MaxRAMPercentage=75.0
-  java_certs: 
-    required: false
-    description: Java options will be passed to java
-    default: sudo $JAVA_HOME/bin/keytool -import -alias sastcer -storepass changeit -keystore $JAVA_HOME/jre/lib/security/cacerts -file checkmarx.crt --noprompt
-  
   ######### Jira Properties ##########
   jira_url:
     required: false
@@ -196,6 +195,7 @@ runs:
     CXFLOW_PARAMS: ${{ inputs.params }}
     CX_FLOW_ENABLED_VULNERABILITY_SCANNERS: ${{ inputs.scanners }}
     CX_FLOW_BUG_TRACKER: ${{ inputs.bug_tracker }}
+    EXTRA_CERTIFICATES: ${{ inputs.extra_certificates }}
     SCA_APIURL: ${{ inputs.sca_api_url }}
     SCA_APPURL: ${{ inputs.sca_app_url }}
     SCA_ACCESSCONTROLURL: ${{ inputs.sca_access_control_url }}
