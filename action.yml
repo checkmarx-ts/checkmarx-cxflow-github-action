@@ -62,7 +62,7 @@ inputs:
     required: false
     default: ''
     description: 'Subdirectory containing extra X509 certificate files (.crt) to be imported into the CxFlow JRE. Example: \"certificates\"'
-   jvmkeytool_path:
+  jvmkeytool_path:
     required: false
     default: '/etc/ssl/certs/java/cacerts'
     description: 'this variable is to configure jvm keytool path.'  
