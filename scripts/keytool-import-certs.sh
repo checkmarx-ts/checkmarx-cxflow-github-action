@@ -3,7 +3,7 @@ set -e
 
 certs_dir="$1"
 jvm_keystore="$2"
-
+echo $JAVA_HOME
 count=1
 for cert in $certs_dir/*.crt
 do
