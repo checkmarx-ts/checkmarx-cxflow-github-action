@@ -64,7 +64,7 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 
 ## Secrets
 
-_Note: It is recommentded to leverage secrets for any sensitive inputs_
+_Note: It is recommended to leverage secrets for any sensitive inputs_
 * checkmarx_url: ${{ secrets.CHECKMARX_URL }}
 * checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
 * checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
