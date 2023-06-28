@@ -64,7 +64,7 @@ The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/ch
 
 ## Secrets
 
-_Note: It is recommentded to leverage secrets for any sensitive inputs_
+_Note: It is recommended to leverage secrets for any sensitive inputs_
 * checkmarx_url: ${{ secrets.CHECKMARX_URL }}
 * checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
 * checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
@@ -81,15 +81,35 @@ _Note: It is recommentded to leverage secrets for any sensitive inputs_
 
 ## Filters
 
-_Note: For filtering files in the params input, it is necessary to escape special characters_
+Files can be excluded from the zipfile that CxFlow uploads to CxSAST by adding the `--cx-flow.zip-exclude` command line option to the `params` property in the GitHub Action configuration. The value of this option is a comma-separated list of regular expressions. Any file whose full path is matched by one of these regular expressions will be excluded from the zipfile.
+
+The regular expression syntax is that used by the [`java.util.regex.Pattern`](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) class.
 
 Here is an example of filtering files:
 
---cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,apps\\/tests\\/.\*,apps\\/docs\/.\*,apps\\/web\\/.\*"
+```
+--cx-flow.zip-exclude=\.git/.*,\.github/.*,apps/tests/.*,apps/docs/.*,apps/web/.*
+```
 
-* Excluding the .git and .github folders from the zip file is highly important! Otherwise each commit will trigger a full scan due to changes in the files under these folders
-* To recursively exclude all files under any folder named "tests" for example, add the following to the -cx-flow.zip-exclude line:  
---cx-flow.zip-exclude="\\.git\\/.\*,\\.github\\/.\*,tests\\/.\*,.\+\\/tests\\/.\*"
+This will exclude all files and subdirectories found under the `.git`, `.github`, `apps/tests`, `apps/docs`, and `apps/web` directories.
+
+* Excluding the `.git` and `.github` folders from the zip file is highly important! Otherwise each commit will trigger a full scan due to changes in the files under these directories (which do not contain files that CxSAST will scan anyway).
+* Do not enclose the list of regular expressions in quotes as these will be taken to be part of the regular expression(s).
+
+The CxFlow log will show you the regular expressions used:
+
+```
+2023-01-25 03:14:45.232  INFO 8 --- [           main] c.c.f.u.ZipUtils                          [vLhiqdlb] : Applying exclusions: \.git/.*,\\.github/.*
+```
+
+If DEBUG logging is enabled, each matching file will be logged:
+
+```
+2023-01-25 03:14:45.240 DEBUG 8 --- [           main] c.c.f.u.ZipUtils                          [vLhiqdlb] : match: \.git/.*$1.git/HEAD
+2023-01-25 03:14:45.240 DEBUG 8 --- [           main] c.c.f.u.ZipUtils                          [vLhiqdlb] : match: \.git/.*$1.git/index
+2023-01-25 03:14:45.241 DEBUG 8 --- [           main] c.c.f.u.ZipUtils                          [vLhiqdlb] : match: \.git/.*$1.git/config
+...
+```
 
 ## Params
 #### Example for params
