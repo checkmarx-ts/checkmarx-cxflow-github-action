@@ -212,7 +212,7 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: cx.sarif
 ```
