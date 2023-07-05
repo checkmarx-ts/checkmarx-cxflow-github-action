@@ -1,6 +1,5 @@
 #Use CxFlow Base image
-#FROM checkmarx/cx-flow
-FROM satyam9889331154/githubaction123:satyamgitlab
+FROM checkmarx/cx-flow
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 #Giving Permission to file
