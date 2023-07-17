@@ -1,4 +1,5 @@
 #!/bin/sh
+docker ps -a
 ls -la
 # import custom certificates into java cacerts keystore
 if [ -n "$EXTRA_CERTIFICATES" ]
