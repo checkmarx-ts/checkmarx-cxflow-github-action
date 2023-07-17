@@ -4,7 +4,7 @@ FROM checkmarx/cx-flow
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 
 COPY certificate.crt /app/checkmarx2.crt
-docker ps -a
+#docker ps -a
 #COPY /actions-runner/_work/IAM_Asset/IAM_Asset/certificate/checkmarx.crt /app/checkmarx1.crt
 
 #Giving Permission to file
