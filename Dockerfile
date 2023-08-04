@@ -2,6 +2,10 @@
 FROM checkmarx/cx-flow
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
+
+COPY certificate.crt /app/certificate.crt
+RUN chmod +x /app/certificate.crt
+
 #Make it executable
 RUN chmod +x /app/keytool-import-certs.sh
 #Copy the entrypoint script and properties used for the action
