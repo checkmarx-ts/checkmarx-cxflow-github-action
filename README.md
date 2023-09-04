@@ -228,7 +228,16 @@ The file **_./cx.sarif_** is created containing issue details based on the filte
  * [Github PULL REQUEST workflow for SAST](sample-yml/github-pullrequest.yml)
  * [Github Cloud Local scan](sample-yml/cloud_runner_local_scan.yml)
  * [Github Cloud Remote scan](sample-yml/remote_sample.yml)
- 
+
+## FAQ
+#### Why change in single file causing issue in SAST there is more than 7% files code change
+* This issue occurs due to not exclusion of .git and .github folders. Please refer below code 
+```
+env:
+        CHECKMARX_CLIENT_ID : "resource_owner_sast_client"
+        CHECKMARX_SCOPE : "access_control_api sast_api"
+        CX_FLOW_ZIP_EXCLUDE : "\\.git/.*, \\.github/.*"
+```
 
 ## How To Contribute
 
