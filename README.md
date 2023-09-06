@@ -122,7 +122,7 @@ For a full list of all the cx-flow parameters, see the [following](https://githu
     --jira.url ="https://xxxx.atlassian.net"
 ````
 *Note:* Please use environment variables if any params values contain spaces.
-#### Example
+#### Example for environment variable
 ```yaml
 jobs:
   # This workflow contains a single job called "build"
