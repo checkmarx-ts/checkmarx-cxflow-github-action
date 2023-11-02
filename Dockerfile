@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-FROM satyam9889331154/githubaction123:imageissue
+FROM checkmarx/cx-flow:1.6.44
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 ENV JVM_OPTS="-Xms4096m -Xmx8192m -XX:MaxRAMPercentage=75.0"
