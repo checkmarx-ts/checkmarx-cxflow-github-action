@@ -1,10 +1,3 @@
-#Use CxFlow Base image
-RUN ["hostname", "--all-fqdns"] && \
-    echo "$HOSTNAME:$(getent ahostsv4 "$HOSTNAME" | head -n1 | cut -d' ' -f1)" >> /etc/hosts
-RUN ip addr show || true
-WORKDIR /app
-CMD ["your", "application", "command"]
-
 FROM checkmarx/cx-flow:1.6.44
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
