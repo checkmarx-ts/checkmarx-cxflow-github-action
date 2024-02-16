@@ -150,7 +150,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  net: 'host'
   args:
     - ${{ inputs.team }}
     - ${{ inputs.project }}
@@ -184,7 +183,7 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-
+ 
   env:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
@@ -225,3 +224,4 @@ runs:
 branding:
   icon: 'check'
   color: 'green'
+net: 'host'  
