@@ -4,7 +4,7 @@ echo ls -lart
 # import custom certificates into java cacerts keystore
 if [ -n "$EXTRA_CERTIFICATES" ]
 then
-        jvm_keystore="/usr/local/jdk-17.0.9/lib/security/cacerts" # java 8 specific location
+        jvm_keystore="/usr/lib/jvm/java-17-openjdk/security/cacerts" # java 8 specific location
         echo "Importing custom certificates in $EXTRA_CERTIFICATES subdirectory to '$jvm_keystore'"
         /app/keytool-import-certs.sh /app "$jvm_keystore"
 fi
