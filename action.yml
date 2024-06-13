@@ -147,7 +147,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - CXFLOW_VERSION=latest
+    - CXFLOW_VERSION=1.7.0
     - ${{ inputs.team }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
