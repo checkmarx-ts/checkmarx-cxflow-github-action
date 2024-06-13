@@ -1,5 +1,6 @@
+ARG CXFLOW_VERSION=198173
 #Use CxFlow Base image
-FROM itskedar/mycxflow:198173
+FROM itskedar/mycxflow:${CXFLOW_VERSION}
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 #Make it executable
