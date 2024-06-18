@@ -150,11 +150,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Check out the repository
-      uses: actions/checkout@v2
-      with:
-      repository: itsKedar/checkmarx-cxflow-github-action
-
     - name: Build Docker image
       run: docker build --build-arg CXFLOW_VERSION=${{ inputs.cxflow_version }} -t my-cxflow-app .
       shell: bash
