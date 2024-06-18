@@ -187,7 +187,7 @@ runs:
 
 
   env:
-    CXFLOW_VERSION: ${{ inputs.cxflow_version }}
+    CXFLOW_VERSION: "${{ inputs.cxflow_version }}"
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
