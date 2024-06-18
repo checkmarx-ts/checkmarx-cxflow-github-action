@@ -1,7 +1,4 @@
-ARG CXFLOW_VERSION=default_value
-
-# Set CXFLOW_VERSION as an environment variable
-ENV CXFLOW_VERSION=$CXFLOW_VERSION
+ENV CXFLOW_VERSION=${{ inputs.cxflow_version }}
 #Use CxFlow Base image
 FROM itskedar/mycxflow:${CXFLOW_VERSION}
 #Copy script to import certs into Java cacerts keystore
