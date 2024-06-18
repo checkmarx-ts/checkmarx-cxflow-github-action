@@ -149,7 +149,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker/build@v3'
+  image: 'dockerfile'
   args:
     - ${{ inputs.cxflow_version }}
     - ${{ inputs.team }}
