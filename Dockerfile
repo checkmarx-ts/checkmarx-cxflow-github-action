@@ -1,4 +1,4 @@
-ENV CXFLOW_VERSION=${{ inputs.cxflow_version }}
+ARG CXFLOW_VERSION
 #Use CxFlow Base image
 FROM itskedar/mycxflow:${CXFLOW_VERSION}
 #Copy script to import certs into Java cacerts keystore
