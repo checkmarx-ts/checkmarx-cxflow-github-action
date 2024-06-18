@@ -1,5 +1,3 @@
-ENV CXFLOW_VERSION=default_value
-RUN echo "Custom arg value: $CXFLOW_VERSION"
 #Use CxFlow Base image
 FROM itskedar/mycxflow:${CXFLOW_VERSION}
 #Copy script to import certs into Java cacerts keystore
