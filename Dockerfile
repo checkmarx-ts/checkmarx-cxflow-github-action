@@ -1,3 +1,4 @@
+ARG CXFLOW_VERSION=default_value
 #Use CxFlow Base image
 FROM itskedar/mycxflow:${CXFLOW_VERSION}
 #Copy script to import certs into Java cacerts keystore
