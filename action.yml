@@ -148,47 +148,80 @@ inputs:
     default: ''
 
 runs:
-  using: 'composite'
-  steps:
-    - name: Build Docker image
-      run: docker build --build-arg CXFLOW_VERSION=${{ inputs.cxflow_version }} -t my-cxflow-app .
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.cxflow_version }}
+    - ${{ inputs.team }}
+    - ${{ inputs.project }}
+    - ${{ inputs.app }}
+    - ${{ inputs.checkmarx_username }}
+    - ${{ inputs.checkmarx_password }}
+    - ${{ inputs.checkmarx_client_secret }}
+    - ${{ inputs.checkmarx_url }}
+    - ${{ inputs.preset }}
+    - ${{ inputs.incremental }}
+    - ${{ inputs.break_build }}
+    - ${{ inputs.params }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.scanners }}
+    - ${{ inputs.sca_api_url }}
+    - ${{ inputs.sca_app_url }}
+    - ${{ inputs.sca_access_control_url }}
+    - ${{ inputs.sca_tenant }}
+    - ${{ inputs.sca_username }}
+    - ${{ inputs.sca_password }}
+    - ${{ inputs.cxgo_client_secret }}
+    - ${{ inputs.cxgo_base_url }}
+    - ${{ inputs.cxgo_portal_url }}
+    - ${{ inputs.java_opts }}
+    - ${{ inputs.jira_url }}
+    - ${{ inputs.jira_username }}
+    - ${{ inputs.jira_token }}
+    - ${{ inputs.jira_project }}
+    - ${{ inputs.jira_issue_type }}
+    - ${{ inputs.jira_open_transition }}
+    - ${{ inputs.jira_close_transition }}
+    - ${{ inputs.jira_open_status }}
+    - ${{ inputs.jira_closed_status }}
 
-    - name: Run Docker container
-      run: |
-        docker run -e TEAM=${{ inputs.team }} \
-                   -e PROJECT=${{ inputs.project }} \
-                   -e APP=${{ inputs.app }} \
-                   -e CHECKMARX_USERNAME=${{ inputs.checkmarx_username }} \
-                   -e CHECKMARX_PASSWORD=${{ inputs.checkmarx_password }} \
-                   -e CHECKMARX_CLIENT_SECRET=${{ inputs.checkmarx_client_secret }} \
-                   -e CHECKMARX_URL=${{ inputs.checkmarx_url }} \
-                   -e PRESET=${{ inputs.preset }} \
-                   -e INCREMENTAL=${{ inputs.incremental }} \
-                   -e BREAK_BUILD=${{ inputs.break_build }} \
-                   -e PARAMS=${{ inputs.params }} \
-                   -e GITHUB_TOKEN=${{ inputs.github_token }} \
-                   -e SCANNERS=${{ inputs.scanners }} \
-                   -e SCA_API_URL=${{ inputs.sca_api_url }} \
-                   -e SCA_APP_URL=${{ inputs.sca_app_url }} \
-                   -e SCA_ACCESS_CONTROL_URL=${{ inputs.sca_access_control_url }} \
-                   -e SCA_TENANT=${{ inputs.sca_tenant }} \
-                   -e SCA_USERNAME=${{ inputs.sca_username }} \
-                   -e SCA_PASSWORD=${{ inputs.sca_password }} \
-                   -e CXGO_CLIENT_SECRET=${{ inputs.cxgo_client_secret }} \
-                   -e CXGO_BASE_URL=${{ inputs.cxgo_base_url }} \
-                   -e CXGO_PORTAL_URL=${{ inputs.cxgo_portal_url }} \
-                   -e JAVA_OPTS=${{ inputs.java_opts }} \
-                   -e JIRA_URL=${{ inputs.jira_url }} \
-                   -e JIRA_USERNAME=${{ inputs.jira_username }} \
-                   -e JIRA_TOKEN=${{ inputs.jira_token }} \
-                   -e JIRA_PROJECT=${{ inputs.jira_project }} \
-                   -e JIRA_ISSUE_TYPE=${{ inputs.jira_issue_type }} \
-                   -e JIRA_OPEN_TRANSITION=${{ inputs.jira_open_transition }} \
-                   -e JIRA_CLOSE_TRANSITION=${{ inputs.jira_close_transition }} \
-                   -e JIRA_CLOSED_STATUS=${{ inputs.jira_closed_status }} \
-                   my-cxflow-app
-      shell: bash             
+
+  env:
+    TEAM: "${{ inputs.team }}"
+    PROJECT: ${{ inputs.project }}
+    APP: ${{ inputs.app }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
+    CHECKMARX_USERNAME: ${{ inputs.checkmarx_username }}
+    CHECKMARX_PASSWORD: ${{ inputs.checkmarx_password }}
+    CHECKMARX_CLIENT_SECRET: ${{ inputs.checkmarx_client_secret }}
+    CHECKMARX_BASE_URL: ${{ inputs.checkmarx_url }}
+    CHECKMARX_SCAN_PRESET: ${{ inputs.preset }}
+    CHECKMARX_INCREMENTAL: ${{ inputs.incremental }}
+    CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
+    CXFLOW_PARAMS: ${{ inputs.params }}
+    CX_FLOW_ENABLED_VULNERABILITY_SCANNERS: ${{ inputs.scanners }}
+    CX_FLOW_BUG_TRACKER: ${{ inputs.bug_tracker }}
+    EXTRA_CERTIFICATES: ${{ inputs.extra_certificates }}
+    SCA_APIURL: ${{ inputs.sca_api_url }}
+    SCA_APPURL: ${{ inputs.sca_app_url }}
+    SCA_ACCESSCONTROLURL: ${{ inputs.sca_access_control_url }}
+    SCA_TENANT: ${{ inputs.sca_tenant }}
+    SCA_USERNAME: ${{ inputs.sca_username }}
+    SCA_PASSWORD: ${{ inputs.sca_password }}
+    CXGO_CLIENT_SECRET: ${{ inputs.cxgo_client_secret }}
+    CXGO_BASE_URL: ${{ inputs.cxgo_base_url }}
+    CXGO_PORTAL_URL: ${{ inputs.cxgo_portal_url }}
+    JAVA_OPTS: ${{ inputs.java_opts }}
+    JIRA_URL: ${{ inputs.jira_url }}
+    JIRA_USERNAME: ${{ inputs.jira_username }}
+    JIRA_TOKEN: ${{ inputs.jira_token }}
+    JIRA_PROJECT: ${{ inputs.jira_project }}
+    JIRA_ISSUE_TYPE: ${{ inputs.jira_issue_type }}
+    JIRA_OPEN_TRANSITION: ${{ inputs.jira_open_transition }}
+    JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
+    JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
+    JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
+    CXFLOW_VERSION: ${{ inputs.cxflow_version }}
 
 branding:
   icon: 'check'
