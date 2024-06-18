@@ -146,18 +146,19 @@ inputs:
     required: false
     description: 'Jira Closed Status'
     default: ''
-
-using: 'composite'
+    
+runs:
+  using: 'composite'
   steps:
-    - name: Check out the repository
+   - name: Check out the repository
       uses: actions/checkout@v2
       with:
       repository: itsKedar/checkmarx-cxflow-github-action
-	  
+
     - name: Build Docker image
       run: docker build --build-arg CXFLOW_VERSION=${{ inputs.cxflow_version }} -t my-cxflow-app .
       shell: bash
-      
+
     - name: Run Docker container
       run: |
         docker run -e TEAM=${{ inputs.team }} \
@@ -191,8 +192,8 @@ using: 'composite'
                    -e JIRA_OPEN_TRANSITION=${{ inputs.jira_open_transition }} \
                    -e JIRA_CLOSE_TRANSITION=${{ inputs.jira_close_transition }} \
                    -e JIRA_CLOSED_STATUS=${{ inputs.jira_closed_status }} \
-                   my-cxflow-app
-      shell: bash        
+                   my-cxflow-app 
+      shell: bash   
 branding:
   icon: 'check'
   color: 'green'
