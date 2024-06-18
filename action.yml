@@ -151,7 +151,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.cxflow_version }}
+    - "--build-arg CXFLOW_VERSION=${{ inputs.cxflow_version }}"
     - ${{ inputs.team }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
