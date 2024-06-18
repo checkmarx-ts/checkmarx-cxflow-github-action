@@ -149,7 +149,7 @@ inputs:
 
 using: 'composite'
   steps:
-      - name: Check out the repository
+    - name: Check out the repository
       uses: actions/checkout@v2
       with:
       repository: itsKedar/checkmarx-cxflow-github-action
@@ -157,7 +157,8 @@ using: 'composite'
     - name: Build Docker image
       run: docker build --build-arg CXFLOW_VERSION=${{ inputs.cxflow_version }} -t my-cxflow-app .
       shell: bash
- - name: Run Docker container
+      
+    - name: Run Docker container
       run: |
         docker run -e TEAM=${{ inputs.team }} \
                    -e PROJECT=${{ inputs.project }} \
