@@ -145,7 +145,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/bentlynevada-bh/checkmarx-cxflow-github-action:latest'
   args:
     - ${{ inputs.team }}
     - ${{ inputs.project }}
