@@ -184,7 +184,7 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-  entrypoint: '/bin/sh -c java itskedar/mycxflow:198173 -Xms512m -Xmx4096m -XshowSettings:vm  -jar /app/cx-flow.jar'
+  #entrypoint: '/bin/sh -c java itskedar/mycxflow:198173 -Xms512m -Xmx4096m -XshowSettings:vm  -jar /app/cx-flow.jar'
   env:
     CXFLOW_VERSION: "${{ inputs.cxflow_version }}"
     TEAM: "${{ inputs.team }}"
