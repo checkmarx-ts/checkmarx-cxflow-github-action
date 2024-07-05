@@ -148,8 +148,8 @@ inputs:
     default: ''
     
 env:
-    TEAM: "${{ inputs.team }}"
-    OTHER_OS: "${{ inputs.other_os }}"
+    TEAM: ${{ inputs.team }}
+    OTHER_OS: ${{ inputs.other_os }}
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
