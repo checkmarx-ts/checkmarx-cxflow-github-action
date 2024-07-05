@@ -148,7 +148,7 @@ inputs:
     default: ''
 stage: 1    
 rules:    
- - if: ${{ inputs.otheros }} == false
+ - if: ${inputs.otheros} == false
   runs:
     using: 'docker'
     image: 'otheros/Dockerfile'
