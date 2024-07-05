@@ -145,9 +145,9 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: ${{ env.project }}
   args:
-    - --build-arg TEAM=${{ inputs.team }}
+    - --build-arg TEAM="sadasdasdsadsadsadsa"
     - ${{ inputs.team }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
@@ -182,7 +182,7 @@ runs:
     - ${{ inputs.jira_closed_status }}
 
   env:
-    TEAM: "${{ inputs.team }}"
+    TEAM: ${{ inputs.team }}
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
