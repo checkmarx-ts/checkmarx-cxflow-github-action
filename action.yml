@@ -178,8 +178,6 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-  image: ${{ env.GITHUB_TOKEN }}
-  
   env:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
@@ -215,6 +213,7 @@ runs:
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
+  image: ${{ env.GITHUB_TOKEN }}
 
 branding:
   icon: 'check'
