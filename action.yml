@@ -62,10 +62,6 @@ inputs:
     required: false
     default: ''
     description: 'Subdirectory containing extra X509 certificate files (.crt) to be imported into the CxFlow JRE. Example: \"certificates\"'
-  cxflow_version:
-    description: 'Version of CxFlow to use'
-    required: false
-    default: '198173'  
 ######### SCA Properties ##########
   sca_api_url:
     required: false
@@ -146,14 +142,45 @@ inputs:
     required: false
     description: 'Jira Closed Status'
     default: ''
-    
 
-  #entrypoint: '/bin/sh -c java itskedar/mycxflow:198173 -Xms512m -Xmx4096m -XshowSettings:vm  -jar /app/cx-flow.jar'
-  
-  
-    env:
-    
-    CXFLOW_VERSION: "${{ inputs.cxflow_version }}"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.team }}
+    - ${{ inputs.project }}
+    - ${{ inputs.app }}
+    - ${{ inputs.checkmarx_username }}
+    - ${{ inputs.checkmarx_password }}
+    - ${{ inputs.checkmarx_client_secret }}
+    - ${{ inputs.checkmarx_url }}
+    - ${{ inputs.preset }}
+    - ${{ inputs.incremental }}
+    - ${{ inputs.break_build }}
+    - ${{ inputs.params }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.scanners }}
+    - ${{ inputs.sca_api_url }}
+    - ${{ inputs.sca_app_url }}
+    - ${{ inputs.sca_access_control_url }}
+    - ${{ inputs.sca_tenant }}
+    - ${{ inputs.sca_username }}
+    - ${{ inputs.sca_password }}
+    - ${{ inputs.cxgo_client_secret }}
+    - ${{ inputs.cxgo_base_url }}
+    - ${{ inputs.cxgo_portal_url }}
+    - ${{ inputs.java_opts }}
+    - ${{ inputs.jira_url }}
+    - ${{ inputs.jira_username }}
+    - ${{ inputs.jira_token }}
+    - ${{ inputs.jira_project }}
+    - ${{ inputs.jira_issue_type }}
+    - ${{ inputs.jira_open_transition }}
+    - ${{ inputs.jira_close_transition }}
+    - ${{ inputs.jira_open_status }}
+    - ${{ inputs.jira_closed_status }}
+
+  env:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
@@ -187,45 +214,8 @@ inputs:
     JIRA_OPEN_TRANSITION: ${{ inputs.jira_open_transition }}
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
-    JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}  
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.cxflow_version }}
-    - ${{ inputs.team }}
-    - ${{ inputs.project }}
-    - ${{ inputs.app }}
-    - ${{ inputs.checkmarx_username }}
-    - ${{ inputs.checkmarx_password }}
-    - ${{ inputs.checkmarx_client_secret }}
-    - ${{ inputs.checkmarx_url }}
-    - ${{ inputs.preset }}
-    - ${{ inputs.incremental }}
-    - ${{ inputs.break_build }}
-    - ${{ inputs.params }}
-    - ${{ inputs.github_token }}
-    - ${{ inputs.scanners }}
-    - ${{ inputs.sca_api_url }}
-    - ${{ inputs.sca_app_url }}
-    - ${{ inputs.sca_access_control_url }}
-    - ${{ inputs.sca_tenant }}
-    - ${{ inputs.sca_username }}
-    - ${{ inputs.sca_password }}
-    - ${{ inputs.cxgo_client_secret }}
-    - ${{ inputs.cxgo_base_url }}
-    - ${{ inputs.cxgo_portal_url }}
-    - ${{ inputs.java_opts }}
-    - ${{ inputs.jira_url }}
-    - ${{ inputs.jira_username }}
-    - ${{ inputs.jira_token }}
-    - ${{ inputs.jira_project }}
-    - ${{ inputs.jira_issue_type }}
-    - ${{ inputs.jira_open_transition }}
-    - ${{ inputs.jira_close_transition }}
-    - ${{ inputs.jira_open_status }}
-    - ${{ inputs.jira_closed_status }}   
-   
+    JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
+
 branding:
   icon: 'check'
   color: 'green'
