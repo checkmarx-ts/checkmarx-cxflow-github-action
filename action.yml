@@ -148,6 +148,7 @@ inputs:
     default: ''
     
 runs:
+  using: 'docker'
   args:
     - ${{ inputs.team }}
     - ${{ inputs.other_os }}
@@ -218,8 +219,7 @@ env:
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
-using: 'docker'    
-image: ${{ inputs.other_os }} 
+  image: ${{ inputs.other_os }} 
 
 branding:
   icon: 'check'
