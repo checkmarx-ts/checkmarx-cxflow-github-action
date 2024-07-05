@@ -182,7 +182,7 @@ runs:
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
 
-if: 'true' == 'false'
+if: true == false
 runs:
   using: 'docker'
   image: 'Dockerfile'
