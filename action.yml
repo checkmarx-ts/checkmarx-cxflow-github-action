@@ -178,7 +178,7 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-  image: ${{ inputs.team }}
+  image: ${{ env.GITHUB_TOKEN }}
   
   env:
     TEAM: "${{ inputs.team }}"
