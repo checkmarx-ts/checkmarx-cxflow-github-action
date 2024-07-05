@@ -1,5 +1,5 @@
 #Use CxFlow Base image
-RUN echo $MY_VAR
+RUN echo $TEAM
 
 FROM satyam9889331154/githubaction123:democxflowfinal1
 #Copy script to import certs into Java cacerts keystore
