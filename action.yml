@@ -149,7 +149,10 @@ inputs:
 
 runs:
   using: 'docker'
-  image: ${{ inputs.other_os }}
+  if:  ${{ env.OTHER_OS }} == 'Dockerfile'
+      image: Dockerfile
+    else:
+      image: otheros/Dockerfile  
   args:
     - ${{ inputs.team }}
     - ${{ inputs.other_os }}
