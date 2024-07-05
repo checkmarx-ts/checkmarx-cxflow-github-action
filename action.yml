@@ -6,10 +6,6 @@ inputs:
     required: true
     description: 'Provide Checkmarx URL'
     default: ''
-  other_os:
-    required: false
-    description: 'Provide Checkmarx URL'
-    default: 'Dockerfile'  
   team:
     required: true
     description: 'Select a Checkmarx Team'
@@ -146,12 +142,11 @@ inputs:
     required: false
     description: 'Jira Closed Status'
     default: ''
-    
+
 runs:
-  using: 'docker'
+  using: 'docker'  
   args:
     - ${{ inputs.team }}
-    - ${{ inputs.other_os }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
     - ${{ inputs.checkmarx_username }}
@@ -183,9 +178,10 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-env:
-    TEAM: ${{ inputs.team }}
-    OTHER_OS: ${{ inputs.other_os }}
+  image: ${{ inputs.team }}
+  
+  env:
+    TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
@@ -219,7 +215,6 @@ env:
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
-  image: ${{ inputs.other_os }} 
 
 branding:
   icon: 'check'
