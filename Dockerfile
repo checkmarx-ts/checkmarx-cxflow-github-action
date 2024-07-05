@@ -1,3 +1,5 @@
+ARG TEAM
+RUN echo ${TEAM}
 FROM satyam9889331154/githubaction123:democxflowfinal1
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
