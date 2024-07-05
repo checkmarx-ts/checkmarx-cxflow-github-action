@@ -142,84 +142,85 @@ inputs:
     required: false
     description: 'Jira Closed Status'
     default: ''
-    
-if: true == true
-runs:
-  using: 'docker'
-  image: 'otheros/Dockerfile'
-  args:
-    - --build-arg BASE_IMAGE="satyam"
-    - ${{ inputs.team }}
-    - ${{ inputs.project }}
-    - ${{ inputs.app }}
-    - ${{ inputs.checkmarx_username }}
-    - ${{ inputs.checkmarx_password }}
-    - ${{ inputs.checkmarx_client_secret }}
-    - ${{ inputs.checkmarx_url }}
-    - ${{ inputs.preset }}
-    - ${{ inputs.incremental }}
-    - ${{ inputs.break_build }}
-    - ${{ inputs.params }}
-    - ${{ inputs.github_token }}
-    - ${{ inputs.scanners }}
-    - ${{ inputs.sca_api_url }}
-    - ${{ inputs.sca_app_url }}
-    - ${{ inputs.sca_access_control_url }}
-    - ${{ inputs.sca_tenant }}
-    - ${{ inputs.sca_username }}
-    - ${{ inputs.sca_password }}
-    - ${{ inputs.cxgo_client_secret }}
-    - ${{ inputs.cxgo_base_url }}
-    - ${{ inputs.cxgo_portal_url }}
-    - ${{ inputs.java_opts }}
-    - ${{ inputs.jira_url }}
-    - ${{ inputs.jira_username }}
-    - ${{ inputs.jira_token }}
-    - ${{ inputs.jira_project }}
-    - ${{ inputs.jira_issue_type }}
-    - ${{ inputs.jira_open_transition }}
-    - ${{ inputs.jira_close_transition }}
-    - ${{ inputs.jira_open_status }}
-    - ${{ inputs.jira_closed_status }}
-
-if: true == false
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - --build-arg BASE_IMAGE="satyam"
-    - ${{ inputs.team }}
-    - ${{ inputs.project }}
-    - ${{ inputs.app }}
-    - ${{ inputs.checkmarx_username }}
-    - ${{ inputs.checkmarx_password }}
-    - ${{ inputs.checkmarx_client_secret }}
-    - ${{ inputs.checkmarx_url }}
-    - ${{ inputs.preset }}
-    - ${{ inputs.incremental }}
-    - ${{ inputs.break_build }}
-    - ${{ inputs.params }}
-    - ${{ inputs.github_token }}
-    - ${{ inputs.scanners }}
-    - ${{ inputs.sca_api_url }}
-    - ${{ inputs.sca_app_url }}
-    - ${{ inputs.sca_access_control_url }}
-    - ${{ inputs.sca_tenant }}
-    - ${{ inputs.sca_username }}
-    - ${{ inputs.sca_password }}
-    - ${{ inputs.cxgo_client_secret }}
-    - ${{ inputs.cxgo_base_url }}
-    - ${{ inputs.cxgo_portal_url }}
-    - ${{ inputs.java_opts }}
-    - ${{ inputs.jira_url }}
-    - ${{ inputs.jira_username }}
-    - ${{ inputs.jira_token }}
-    - ${{ inputs.jira_project }}
-    - ${{ inputs.jira_issue_type }}
-    - ${{ inputs.jira_open_transition }}
-    - ${{ inputs.jira_close_transition }}
-    - ${{ inputs.jira_open_status }}
-    - ${{ inputs.jira_closed_status }}  
+stage: 1    
+rules:    
+ - if: true == true
+  runs:
+    using: 'docker'
+    image: 'otheros/Dockerfile'
+    args:
+      - --build-arg BASE_IMAGE="satyam"
+      - ${{ inputs.team }}
+      - ${{ inputs.project }}
+      - ${{ inputs.app }}
+      - ${{ inputs.checkmarx_username }}
+      - ${{ inputs.checkmarx_password }}
+      - ${{ inputs.checkmarx_client_secret }}
+      - ${{ inputs.checkmarx_url }}
+      - ${{ inputs.preset }}
+      - ${{ inputs.incremental }}
+      - ${{ inputs.break_build }}
+      - ${{ inputs.params }}
+      - ${{ inputs.github_token }}
+      - ${{ inputs.scanners }}
+      - ${{ inputs.sca_api_url }}
+      - ${{ inputs.sca_app_url }}
+      - ${{ inputs.sca_access_control_url }}
+      - ${{ inputs.sca_tenant }}
+      - ${{ inputs.sca_username }}
+      - ${{ inputs.sca_password }}
+      - ${{ inputs.cxgo_client_secret }}
+      - ${{ inputs.cxgo_base_url }}
+      - ${{ inputs.cxgo_portal_url }}
+      - ${{ inputs.java_opts }}
+      - ${{ inputs.jira_url }}
+      - ${{ inputs.jira_username }}
+      - ${{ inputs.jira_token }}
+      - ${{ inputs.jira_project }}
+      - ${{ inputs.jira_issue_type }}
+      - ${{ inputs.jira_open_transition }}
+      - ${{ inputs.jira_close_transition }}
+      - ${{ inputs.jira_open_status }}
+      - ${{ inputs.jira_closed_status }}
+rules:
+ - if: true == false
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+      - --build-arg BASE_IMAGE="satyam"
+      - ${{ inputs.team }}
+      - ${{ inputs.project }}
+      - ${{ inputs.app }}
+      - ${{ inputs.checkmarx_username }}
+      - ${{ inputs.checkmarx_password }}
+      - ${{ inputs.checkmarx_client_secret }}
+      - ${{ inputs.checkmarx_url }}
+      - ${{ inputs.preset }}
+      - ${{ inputs.incremental }}
+      - ${{ inputs.break_build }}
+      - ${{ inputs.params }}
+      - ${{ inputs.github_token }}
+      - ${{ inputs.scanners }}
+      - ${{ inputs.sca_api_url }}
+      - ${{ inputs.sca_app_url }}
+      - ${{ inputs.sca_access_control_url }}
+      - ${{ inputs.sca_tenant }}
+      - ${{ inputs.sca_username }}
+      - ${{ inputs.sca_password }}
+      - ${{ inputs.cxgo_client_secret }}
+      - ${{ inputs.cxgo_base_url }}
+      - ${{ inputs.cxgo_portal_url }}
+      - ${{ inputs.java_opts }}
+      - ${{ inputs.jira_url }}
+      - ${{ inputs.jira_username }}
+      - ${{ inputs.jira_token }}
+      - ${{ inputs.jira_project }}
+      - ${{ inputs.jira_issue_type }}
+      - ${{ inputs.jira_open_transition }}
+      - ${{ inputs.jira_close_transition }}
+      - ${{ inputs.jira_open_status }}
+      - ${{ inputs.jira_closed_status }}  
 
   env:
     TEAM: "${{ inputs.team }}"
