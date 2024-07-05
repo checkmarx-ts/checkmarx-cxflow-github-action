@@ -1,8 +1,5 @@
-#Use CxFlow Base image
-ARG BASE_IMAGE
-
-RUN echo "Using base image: ${BASE_IMAGE}"
-
+RUN echo "Using base image 1 : ${CX_FLOW_ENABLED_VULNERABILITY_SCANNERS}"
+RUN echo "Using base image 2 : ${{ inputs.scanners }}"
 FROM satyam9889331154/githubaction123:democxflowfinal1
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
