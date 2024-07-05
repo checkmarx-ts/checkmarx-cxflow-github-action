@@ -1,4 +1,6 @@
 #Use CxFlow Base image
+ARG BASE_IMAGE
+
 RUN echo "Using base image: ${BASE_IMAGE}"
 
 FROM satyam9889331154/githubaction123:democxflowfinal1
