@@ -149,7 +149,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: ${OTHER_OS}
+  image: $OTHER_OS
   args:
     - ${{ inputs.team }}
     - ${{ inputs.other_os }}
