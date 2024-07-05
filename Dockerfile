@@ -1,6 +1,4 @@
-ARG ${{ inputs.team }}
-
-FROM satyam9889331154/${{ inputs.team }}
+FROM satyam9889331154/${TEAM}
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 #Make it executable
