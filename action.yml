@@ -145,7 +145,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'DockerFile2'
+  image: 'Dockerfile22'
   args:
     - --build-arg BASE_IMAGE="satyam"
     - ${{ inputs.team }}
