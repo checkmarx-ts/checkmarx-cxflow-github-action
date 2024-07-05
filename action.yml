@@ -152,6 +152,7 @@ runs:
   image: ${TEAM}
   args:
     - ${{ inputs.team }}
+    - ${{ inputs.other_os }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
     - ${{ inputs.checkmarx_username }}
@@ -186,6 +187,7 @@ runs:
 
   env:
     TEAM: "${{ inputs.team }}"
+    OTHER_OS: "${{ inputs.other_os }}"
     PROJECT: ${{ inputs.project }}
     APP: ${{ inputs.app }}
     GITHUB_TOKEN: ${{ inputs.github_token }}
