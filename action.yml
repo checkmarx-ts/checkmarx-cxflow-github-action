@@ -147,7 +147,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - build-arg BASE_IMAGE="satyam"
+    - --build-arg BASE_IMAGE="satyam"
     - ${{ inputs.team }}
     - ${{ inputs.project }}
     - ${{ inputs.app }}
