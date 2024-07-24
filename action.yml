@@ -62,10 +62,6 @@ inputs:
     required: false
     default: ''
     description: 'Subdirectory containing extra X509 certificate files (.crt) to be imported into the CxFlow JRE. Example: \"certificates\"'
-  jvmkeytool_path:
-    required: false
-    default: '/etc/ssl/certs/java/cacerts'
-    description: 'this variable is to configure jvm keytool path.'  
 ######### SCA Properties ##########
   sca_api_url:
     required: false
@@ -149,7 +145,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile1'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.team }}
     - ${{ inputs.project }}
@@ -183,7 +179,7 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
- 
+
   env:
     TEAM: "${{ inputs.team }}"
     PROJECT: ${{ inputs.project }}
@@ -200,7 +196,6 @@ runs:
     CX_FLOW_ENABLED_VULNERABILITY_SCANNERS: ${{ inputs.scanners }}
     CX_FLOW_BUG_TRACKER: ${{ inputs.bug_tracker }}
     EXTRA_CERTIFICATES: ${{ inputs.extra_certificates }}
-    JVMKEYTOOL_PATH:  ${{ inputs.jvmkeytool_path }}
     SCA_APIURL: ${{ inputs.sca_api_url }}
     SCA_APPURL: ${{ inputs.sca_app_url }}
     SCA_ACCESSCONTROLURL: ${{ inputs.sca_access_control_url }}
@@ -224,4 +219,3 @@ runs:
 branding:
   icon: 'check'
   color: 'green'
-net: 'host'  
