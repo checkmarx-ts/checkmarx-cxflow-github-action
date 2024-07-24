@@ -1,5 +1,6 @@
 #Use CxFlow Base image
-FROM checkmarx/cx-flow
+FROM checkmarx/cx-flow:1.7.0
+
 #Copy script to import certs into Java cacerts keystore
 COPY scripts/keytool-import-certs.sh /app/keytool-import-certs.sh
 #Make it executable
