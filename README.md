@@ -22,6 +22,8 @@ Please find more info in the official website: <a href="www.checkmarx.com">Check
 
 The GitHub action  [![Latest Release](https://img.shields.io/github/v/release/checkmarx-ts/checkmarx-cxflow-github-action)](https://github.com/checkmarx-ts/checkmarx-github-action/releases)  is only compatible with Checkmarx SAST 9.x and Checkmarx CxSCA.
 
+*Note:* Please use [cx-flow-debian](https://github.com/checkmarx-ts/checkmarx-cxflow-github-debian) GitHub action for using cx-flow with the Debian operating system. This GitHub action supports Alpine OS. Every parameter is the same in both. 
+
 ## Inputs
 
 | Variable                | Example Value &nbsp;                           | Description &nbsp;                                                                                                                                                                                                                                                 | Type          | Required | Default                        |
