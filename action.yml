@@ -188,7 +188,8 @@ runs:
     CHECKMARX_USERNAME: ${{ inputs.checkmarx_username }}
     CHECKMARX_PASSWORD: ${{ inputs.checkmarx_password }}
     CHECKMARX_CLIENT_SECRET: ${{ inputs.checkmarx_client_secret }}
-    CHECKMARX_URL: ${{ inputs.checkmarx_url }}
+    CHECKMARX_URL: ${{ inputs.checkmarx_url }}/restapi
+    CHECKMARX_BASE_URL: ${{ env.CHECKMARX_URL }}
     CHECKMARX_SCAN_PRESET: ${{ inputs.preset }}
     CHECKMARX_INCREMENTAL: ${{ inputs.incremental }}
     CX_FLOW_BREAK_BUILD: ${{ inputs.break_build }}
