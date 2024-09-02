@@ -11,7 +11,7 @@ fi
 # Check if CHECKMARX_URL contains 'cxrestapi'
 if [[ "$CHECKMARX_URL" != *"cxrestapi"* ]]; then
   # If not, append 'cxrestapi' to the CHECKMARX_URL
-  CHECKMARX_URL="${CHECKMARX_URL}/cxrestapiAPIAPAPAPAPPAP"
+  CHECKMARX_URL="${CHECKMARX_URL}/cxrestapi"
   export CHECKMARX_URL
   echo "Updated CHECKMARX_URL: $CHECKMARX_URL"
 else
