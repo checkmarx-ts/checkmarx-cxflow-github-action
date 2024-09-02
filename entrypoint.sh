@@ -9,7 +9,7 @@ then
 fi
 
 # Check if CHECKMARX_URL contains 'cxrestapi'
-if [[ "$CHECKMARX_URL" != *"cxrestapi"* ]]; then
+if [[ -n "$CHECKMARX_URL" && "$CHECKMARX_URL" != *"cxrestapi"* ]]; then
   # If not, append 'cxrestapi' to the CHECKMARX_URL
   CHECKMARX_URL="${CHECKMARX_URL}/cxrestapi"
   export CHECKMARX_URL
