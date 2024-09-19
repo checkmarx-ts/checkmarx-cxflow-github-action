@@ -143,9 +143,13 @@ inputs:
     description: 'Jira Closed Status'
     default: ''
   #######CLI Parameters ###########
-  project_custom_field:
+  project_custom_field_key:
     required: false
-    description: 'checkmarx project custom field'
+    description: 'checkmarx project custom field key'
+    default: ''
+  project_custom_field_value:
+    required: false
+    description: 'checkmarx project custom field value'
     default: ''
   scan_custom_field:
     required: false
@@ -188,7 +192,8 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
-    - ${{ inputs.project_custom_field }}
+    - ${{ inputs.project_custom_field_key }}
+    - ${{ inputs.project_custom_field_value }}
     - ${{ inputs.scan_custom_field }}
 
   env:
@@ -226,7 +231,8 @@ runs:
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
-    PROJECT_CUSTOM_FIELD : ${{ inputs.project_custom_field }}
+    PROJECT_CUSTOM_FIELD_KEY : ${{ inputs.project_custom_field_key }}
+    PROJECT_CUSTOM_FIELD_VALUE : ${{ inputs.project_custom_field_value }}
     SCAN_CUSTOM_FIELD: ${{ inputs.scan_custom_field }}
 
 branding:
