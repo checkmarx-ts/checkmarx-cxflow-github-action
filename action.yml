@@ -142,6 +142,15 @@ inputs:
     required: false
     description: 'Jira Closed Status'
     default: ''
+  #######CLI Parameters ###########
+  project_custom_field:
+    required: false
+    description: 'checkmarx project custom field'
+    default: ''
+  scan_custom_field:
+    required: false
+    description: 'checkmarx scan custom field'
+    default: ''
 
 runs:
   using: 'docker'
@@ -179,6 +188,8 @@ runs:
     - ${{ inputs.jira_close_transition }}
     - ${{ inputs.jira_open_status }}
     - ${{ inputs.jira_closed_status }}
+    - ${{ inputs.project_custom_field }}
+    - ${{ inputs.scan_custom_field }}
 
   env:
     TEAM: "${{ inputs.team }}"
@@ -215,6 +226,8 @@ runs:
     JIRA_CLOSE_TRANSITION: ${{ inputs.jira_close_transition }}
     JIRA_OPEN_STATUS: ${{ inputs.jira_open_status }}
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
+    PROJECT_CUSTOM_FIELD : ${{ inputs.project_custom_field }}
+    SCAN_CUSTOM_FIELD: ${{ inputs.scan_custom_field }}
 
 branding:
   icon: 'check'
