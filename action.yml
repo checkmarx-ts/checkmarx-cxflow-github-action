@@ -151,11 +151,14 @@ inputs:
     required: false
     description: 'checkmarx project custom field value'
     default: ''
-  scan_custom_field:
+  scan_custom_field_key:
     required: false
-    description: 'checkmarx scan custom field'
+    description: 'checkmarx scan custom field key'
     default: ''
-
+  scan_custom_field_value:
+    required: false
+    description: 'checkmarx scan custom field value'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -194,7 +197,8 @@ runs:
     - ${{ inputs.jira_closed_status }}
     - ${{ inputs.project_custom_field_key }}
     - ${{ inputs.project_custom_field_value }}
-    - ${{ inputs.scan_custom_field }}
+    - ${{ inputs.scan_custom_field_key }}
+    - ${{ inputs.scan_custom_field_value }}
 
   env:
     TEAM: "${{ inputs.team }}"
@@ -233,7 +237,8 @@ runs:
     JIRA_CLOSED_STATUS: ${{ inputs.jira_closed_status }}
     PROJECT_CUSTOM_FIELD_KEY : ${{ inputs.project_custom_field_key }}
     PROJECT_CUSTOM_FIELD_VALUE : ${{ inputs.project_custom_field_value }}
-    SCAN_CUSTOM_FIELD: ${{ inputs.scan_custom_field }}
+    SCAN_CUSTOM_FIELD_KEY: ${{ inputs.scan_custom_field_key }}
+    SCAN_CUSTOM_FIELD_VALUE: ${{ inputs.scan_custom_field_value }}
 
 branding:
   icon: 'check'
